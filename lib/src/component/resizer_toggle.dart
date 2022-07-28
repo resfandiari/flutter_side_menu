@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:simple_animations/simple_animations.dart';
+
+class ResizerToggle extends StatefulWidget {
+  const ResizerToggle({
+    Key? key,
+    required this.onTap,
+    required this.rightArrow,
+    this.leftSide = true,
+    ResizerToggleData? data,
+  })  : data = data ?? const ResizerToggleData(),
+        super(key: key);
+  final void Function() onTap;
+  final bool rightArrow, leftSide;
+  final ResizerToggleData data;
+
+  @override
+  State<ResizerToggle> createState() => _ResizerToggleState();
+}
+
+class _ResizerToggleState extends State<ResizerToggle> with AnimationMixin {
+  late Animation<double> buttonOpacity;
+
+  @override
+  void initState() {
+    buttonOpacity = Tween<double>(
+      begin: widget.data.opacity,
+      end: 1,
+    ).animate(
+      controller,
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: widget.data.topPosition,
+      right: widget.leftSide ? 0 : null,
+      left: widget.leftSide ? null : 0,
+      child: InkWell(
+        onTap: () => widget.onTap(),
+        onHover: (isHovering) {
+          if (isHovering) {
+            controller.play(duration: Duration.zero);
+          } else {
+            controller.playReverse(duration: Duration.zero);
+          }
+        },
+        child: Opacity(
+          opacity: buttonOpacity.value,
+          child: RotatedBox(
+            quarterTurns: widget.leftSide
+                ? widget.rightArrow
+                    ? 12
+                    : 6
+                : widget.rightArrow
+                    ? 6
+                    : 12,
+            child: Card(
+              margin: EdgeInsets.zero,
+              child: Icon(
+                Icons.keyboard_arrow_right_outlined,
+                color: widget.data.iconColor,
+                size: widget.data.iconSize,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ResizerToggleData {
+  const ResizerToggleData({
+    this.iconColor = Colors.black,
+    this.topPosition = 20,
+    this.opacity = 0.3,
+    this.iconSize = 20,
+  })  : assert(topPosition >= 0.0),
+        assert(opacity >= 0.0),
+        assert(iconSize >= 0.0);
+
+  final Color iconColor;
+  final double topPosition, opacity, iconSize;
+}

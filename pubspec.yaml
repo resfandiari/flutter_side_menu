@@ -1,0 +1,19 @@
+name: flutter_side_menu
+description: side menu for flutter
+version: 0.0.1
+homepage: https://github.com/resfandiari/flutter_side_menu
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  simple_animations: ^4.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
