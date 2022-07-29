@@ -13,3 +13,39 @@
 </a>  
 </div>
 Caution: This project is still under development.
+
+## Usage
+
+To use this plugin, add `flutter_side_menu` as a [dependency in your pubspec.yaml file](https://flutter.dev/platform-plugins/).
+
+### Example
+
+<?code-excerpt "basic.dart (basic-example)"?>
+``` dart
+import 'package:flutter/material.dart';
+import 'package:flutter_side_menu/flutter_side_menu.dart';
+
+void main() => runApp(
+      MaterialApp(
+        home: Material(
+          child: Scaffold(
+            body: Row(
+              children: const [
+                SideMenu(),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      'body',
+                    ),
+                  ),
+                ),
+                SideMenu(
+                  leftSide: false,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+```
