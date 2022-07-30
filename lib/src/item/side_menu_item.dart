@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
@@ -33,8 +34,12 @@ class SideMenuItem extends StatelessWidget {
   Widget _createView({
     required BuildContext context,
   }) {
-    final content = _tooltip(
-      child: _content(context: context),
+    final content = _hasTooltip(
+      child: _hasBadge(
+        child: _content(
+          context: context,
+        ),
+      ),
     );
 
     return data.isSelected && data.hasSelectedLine
@@ -42,12 +47,26 @@ class SideMenuItem extends StatelessWidget {
         : content;
   }
 
-  Widget _tooltip({
+  Widget _hasTooltip({
     required Widget child,
   }) {
     if (data.tooltip != null) {
       return Tooltip(
         message: data.tooltip,
+        child: child,
+      );
+    }
+    return child;
+  }
+
+  Widget _hasBadge({
+    required Widget child,
+  }) {
+    if (data.badgeContent != null) {
+      return Badge(
+        badgeContent: data.badgeContent!,
+        badgeColor: data.badgeColor,
+        position: data.badgePosition,
         child: child,
       );
     }
@@ -140,6 +159,7 @@ class SideMenuItemData {
     this.title,
     this.titleStyle,
     this.tooltip,
+    this.badgeContent,
     this.hasSelectedLine = true,
     this.selectedLineSize = const Size(
       Constants.itemSelectedLineWidth,
@@ -152,6 +172,10 @@ class SideMenuItemData {
     this.selectedColor = Constants.selectedColor,
     this.unSelectedColor = Constants.unSelectedColor,
     this.highlightSelectedColor = Constants.highlightSelectedColor,
+    this.badgeColor = Constants.selectedColor,
+    this.badgePosition = const BadgePosition(
+      end: Constants.badgeSpaceFromEnd,
+    ),
   })  : assert(itemHeight >= 0.0),
         assert(iconSize >= 0.0),
         assert(icon != null || title != null);
@@ -162,9 +186,14 @@ class SideMenuItemData {
   final String? title;
   final TextStyle? titleStyle;
   final String? tooltip;
+  final Widget? badgeContent;
+  final BadgePosition badgePosition;
   final IconData? icon;
   final double itemHeight, iconSize;
   final EdgeInsetsDirectional margin;
   final BorderRadius borderRadius;
-  final Color selectedColor, unSelectedColor, highlightSelectedColor;
+  final Color selectedColor,
+      unSelectedColor,
+      highlightSelectedColor,
+      badgeColor;
 }

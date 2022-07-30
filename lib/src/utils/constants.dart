@@ -20,7 +20,8 @@ class Constants {
   static const Color backgroundColor = Color(0xffffffff);
 
   /// Padding
-  static const EdgeInsetsDirectional textStartPadding = EdgeInsetsDirectional.only(
+  static const EdgeInsetsDirectional textStartPadding =
+      EdgeInsetsDirectional.only(
     start: 16,
   );
   static const EdgeInsetsDirectional zeroPadding = EdgeInsetsDirectional.zero;
@@ -32,6 +33,8 @@ class Constants {
     top: 4,
   );
 
+  ///Space
+  static const double badgeSpaceFromEnd = 12.0;
 
   /// BorderRadius
   static const BorderRadius radius_4 = BorderRadius.all(

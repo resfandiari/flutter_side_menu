@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   simple_animations: ^4.2.0
   auto_size_text: ^3.0.0
+  badges: ^2.0.3
 
 dev_dependencies:
   flutter_test:
