@@ -24,9 +24,34 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: Row(
           children: [
-            const SideMenu(
+             SideMenu(
               mode: SideMenuMode.auto,
               priority: SideMenuPriority.sizer,
+              body:SideMenuBodyData(
+                header: Text('Header'),
+                items: [
+                  SideMenuItemData(
+                    isSelected: true,
+                    onTap: (){},
+                    title: 'Item 1',
+                    icon: Icons.home,
+                  ),
+                  SideMenuItemData(
+                    isSelected: false,
+                    onTap: (){},
+                    title: 'Item 2',
+                    icon: Icons.home,
+                  ),
+                  SideMenuItemData(
+                    isSelected: false,
+                    onTap: (){},
+                    title: 'Item 3',
+                    icon: Icons.home,
+                  ),
+                ],
+                footer: Text('Footer'),
+
+            ),
             ),
             Expanded(
               child: Container(
@@ -38,10 +63,6 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-            ),
-            const SideMenu(
-              mode: SideMenuMode.compact,
-              leftSide: false,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_side_menu/src/utils/utils.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 class ResizerToggle extends StatefulWidget {
@@ -6,12 +7,12 @@ class ResizerToggle extends StatefulWidget {
     Key? key,
     required this.onTap,
     required this.rightArrow,
-    this.leftSide = true,
+    this.leftPosition = true,
     ResizerToggleData? data,
   })  : data = data ?? const ResizerToggleData(),
         super(key: key);
   final void Function() onTap;
-  final bool rightArrow, leftSide;
+  final bool rightArrow, leftPosition;
   final ResizerToggleData data;
 
   @override
@@ -34,10 +35,8 @@ class _ResizerToggleState extends State<ResizerToggle> with AnimationMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
+    return PositionedDirectional(
       top: widget.data.topPosition,
-      right: widget.leftSide ? 0 : null,
-      left: widget.leftSide ? null : 0,
       child: InkWell(
         onTap: () => widget.onTap(),
         onHover: (isHovering) {
@@ -50,7 +49,7 @@ class _ResizerToggleState extends State<ResizerToggle> with AnimationMixin {
         child: Opacity(
           opacity: buttonOpacity.value,
           child: RotatedBox(
-            quarterTurns: widget.leftSide
+            quarterTurns: widget.leftPosition
                 ? widget.rightArrow
                     ? 12
                     : 6
@@ -60,7 +59,9 @@ class _ResizerToggleState extends State<ResizerToggle> with AnimationMixin {
             child: Card(
               margin: EdgeInsets.zero,
               child: Icon(
-                Icons.keyboard_arrow_right_outlined,
+                Utils.isRTL(context)
+                    ? Icons.keyboard_arrow_left_outlined
+                    : Icons.keyboard_arrow_right_outlined,
                 color: widget.data.iconColor,
                 size: widget.data.iconSize,
               ),

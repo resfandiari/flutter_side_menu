@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/component/resizer.dart';
 import 'package:flutter_side_menu/src/component/resizer_toggle.dart';
+import 'package:flutter_side_menu/src/side_menu_body.dart';
 import 'package:flutter_side_menu/src/side_menu_mode.dart';
+import 'package:flutter_side_menu/src/side_menu_position.dart';
 import 'package:flutter_side_menu/src/side_menu_priority.dart';
 import 'package:flutter_side_menu/src/side_menu_width_mixin.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
@@ -9,11 +11,12 @@ import 'package:flutter_side_menu/src/utils/constants.dart';
 class SideMenu extends StatefulWidget {
   const SideMenu({
     Key? key,
+    required this.body,
     this.mode = SideMenuMode.auto,
     this.priority = SideMenuPriority.mode,
+    this.position = SideMenuPosition.left,
     this.minWidth = Constants.minWidth,
     this.maxWidth = Constants.maxWidth,
-    this.leftSide = true,
     this.hasResizer = true,
     this.hasResizerToggle = true,
     this.resizerData,
@@ -23,10 +26,12 @@ class SideMenu extends StatefulWidget {
         assert(resizerData != null ? hasResizer : true),
         assert(resizerToggleData != null ? hasResizerToggle : true),
         super(key: key);
+  final SideMenuBodyData body;
   final SideMenuMode mode;
   final SideMenuPriority priority;
+  final SideMenuPosition position;
   final double minWidth, maxWidth;
-  final bool leftSide, hasResizer, hasResizerToggle;
+  final bool hasResizer, hasResizerToggle;
   final ResizerData? resizerData;
   final ResizerToggleData? resizerToggleData;
 
@@ -99,8 +104,10 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
         minWidth: widget.minWidth,
         maxWidth: widget.maxWidth,
       ),
-      child: const Placeholder(
-        color: Colors.white,
+      child: SideMenuBody(
+        isCompact: _currentWidth == widget.minWidth,
+        minWidth: widget.minWidth,
+        data: widget.body,
       ),
     );
   }
@@ -108,10 +115,9 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
   Widget _resizer() {
     return Resizer(
       data: widget.resizerData,
-      leftSide: widget.leftSide,
       onPanUpdate: (details) {
         late final double x;
-        if (widget.leftSide) {
+        if (widget.position == SideMenuPosition.left) {
           x = details.globalPosition.dx;
         } else {
           x = MediaQuery.of(context).size.width - details.globalPosition.dx;
@@ -137,9 +143,9 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (!widget.leftSide) _resizer(),
+        if (widget.position == SideMenuPosition.right) _resizer(),
         child,
-        if (widget.leftSide) _resizer(),
+        if (widget.position == SideMenuPosition.left) _resizer(),
       ],
     );
   }
@@ -148,7 +154,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
     return ResizerToggle(
       data: widget.resizerToggleData,
       rightArrow: _currentWidth == widget.minWidth,
-      leftSide: widget.leftSide,
+      leftPosition: widget.position == SideMenuPosition.left,
       onTap: () {
         setState(() {
           _currentWidth = _currentWidth == widget.minWidth
@@ -161,6 +167,9 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
 
   Widget _hasResizerToggle({required Widget child}) {
     return Stack(
+      alignment: widget.position == SideMenuPosition.left
+          ? AlignmentDirectional.centerEnd
+          : AlignmentDirectional.centerStart,
       children: [
         child,
         _resizerToggle(),

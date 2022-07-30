@@ -6,13 +6,11 @@ class Resizer extends StatefulWidget {
   const Resizer({
     Key? key,
     required this.onPanUpdate,
-    this.leftSide = true,
     ResizerData? data,
   })  : data = data ?? const ResizerData(),
         super(key: key);
 
   final Function(DragUpdateDetails details) onPanUpdate;
-  final bool leftSide;
   final ResizerData data;
 
   @override
