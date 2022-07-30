@@ -1,6 +1,6 @@
 name: flutter_side_menu
-description: side menu for flutter
-version: 0.0.1
+description: Full customizable side menu for flutter
+version: 0.0.2
 homepage: https://github.com/resfandiari/flutter_side_menu
 
 environment:
