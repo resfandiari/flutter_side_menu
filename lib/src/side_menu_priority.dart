@@ -1,4 +1,4 @@
-enum SideMenuPriority{
+enum SideMenuPriority {
   mode,
   sizer;
 }
