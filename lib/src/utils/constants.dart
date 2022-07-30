@@ -17,6 +17,7 @@ class Constants {
   static const Color selectedColor = Color(0xff0055c3);
   static const Color highlightSelectedColor = Color(0xffe6effb);
   static const Color unSelectedColor = Color(0xff8e8e8e);
+  static const Color backgroundColor = Color(0xffffffff);
 
   /// Padding
   static const EdgeInsetsDirectional textStartPadding = EdgeInsetsDirectional.only(
