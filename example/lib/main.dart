@@ -24,34 +24,19 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: Row(
           children: [
-             SideMenu(
-              mode: SideMenuMode.auto,
-              priority: SideMenuPriority.sizer,
-              body:SideMenuBodyData(
-                header: Text('Header'),
+            SideMenu(
+              body: SideMenuBodyData(
+                header: const Text('Header'),
                 items: [
                   SideMenuItemData(
                     isSelected: true,
-                    onTap: (){},
+                    onTap: () {},
                     title: 'Item 1',
                     icon: Icons.home,
                   ),
-                  SideMenuItemData(
-                    isSelected: false,
-                    onTap: (){},
-                    title: 'Item 2',
-                    icon: Icons.home,
-                  ),
-                  SideMenuItemData(
-                    isSelected: false,
-                    onTap: (){},
-                    title: 'Item 3',
-                    icon: Icons.home,
-                  ),
                 ],
-                footer: Text('Footer'),
-
-            ),
+                footer: const Text('Footer'),
+              ),
             ),
             Expanded(
               child: Container(
@@ -62,6 +47,12 @@ class _MyAppState extends State<MyApp> {
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
+              ),
+            ),
+            const SideMenu(
+              position: SideMenuPosition.right,
+              body: SideMenuBodyData(
+                customChild: Text('custom view'),
               ),
             ),
           ],
