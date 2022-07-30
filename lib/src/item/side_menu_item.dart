@@ -33,11 +33,25 @@ class SideMenuItem extends StatelessWidget {
   Widget _createView({
     required BuildContext context,
   }) {
-    final content = _content(context: context);
+    final content = _tooltip(
+      child: _content(context: context),
+    );
 
     return data.isSelected && data.hasSelectedLine
         ? _hasSelectedLine(child: content)
         : content;
+  }
+
+  Widget _tooltip({
+    required Widget child,
+  }) {
+    if (data.tooltip != null) {
+      return Tooltip(
+        message: data.tooltip,
+        child: child,
+      );
+    }
+    return child;
   }
 
   Widget _content({
@@ -125,6 +139,7 @@ class SideMenuItemData {
     this.icon,
     this.title,
     this.titleStyle,
+    this.tooltip,
     this.hasSelectedLine = true,
     this.selectedLineSize = const Size(
       Constants.itemSelectedLineWidth,
@@ -146,6 +161,7 @@ class SideMenuItemData {
   final Size selectedLineSize;
   final String? title;
   final TextStyle? titleStyle;
+  final String? tooltip;
   final IconData? icon;
   final double itemHeight, iconSize;
   final EdgeInsetsDirectional margin;
