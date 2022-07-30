@@ -25,18 +25,20 @@ class _MyAppState extends State<MyApp> {
         body: Row(
           children: [
             SideMenu(
-              body: SideMenuBodyData(
-                header: const Text('Header'),
-                items: [
-                  SideMenuItemData(
-                    isSelected: true,
-                    onTap: () {},
-                    title: 'Item 1',
-                    icon: Icons.home,
-                  ),
-                ],
-                footer: const Text('Footer'),
-              ),
+              builder: (isOpen) {
+                return SideMenuBodyData(
+                  header: const Text('Header'),
+                  items: [
+                    SideMenuItemData(
+                      isSelected: true,
+                      onTap: () {},
+                      title: 'Item 1',
+                      icon: Icons.home,
+                    ),
+                  ],
+                  footer: const Text('Footer'),
+                );
+              },
             ),
             Expanded(
               child: Container(
@@ -49,9 +51,9 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            const SideMenu(
+            SideMenu(
               position: SideMenuPosition.right,
-              body: SideMenuBodyData(
+              builder: (isOpen) => const SideMenuBodyData(
                 customChild: Text('custom view'),
               ),
             ),

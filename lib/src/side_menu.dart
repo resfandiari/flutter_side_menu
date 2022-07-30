@@ -8,10 +8,12 @@ import 'package:flutter_side_menu/src/side_menu_priority.dart';
 import 'package:flutter_side_menu/src/side_menu_width_mixin.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
+typedef SideMenuBuilder = SideMenuBodyData Function(bool isOpen);
+
 class SideMenu extends StatefulWidget {
   const SideMenu({
     Key? key,
-    required this.body,
+    required this.builder,
     this.mode = SideMenuMode.auto,
     this.priority = SideMenuPriority.mode,
     this.position = SideMenuPosition.left,
@@ -26,7 +28,8 @@ class SideMenu extends StatefulWidget {
         assert(resizerData != null ? hasResizer : true),
         assert(resizerToggleData != null ? hasResizerToggle : true),
         super(key: key);
-  final SideMenuBodyData body;
+
+  final SideMenuBuilder builder;
   final SideMenuMode mode;
   final SideMenuPriority priority;
   final SideMenuPosition position;
@@ -107,7 +110,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
       child: SideMenuBody(
         isCompact: _currentWidth == widget.minWidth,
         minWidth: widget.minWidth,
-        data: widget.body,
+        data: widget.builder(_currentWidth == widget.minWidth),
       ),
     );
   }

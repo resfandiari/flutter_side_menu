@@ -32,7 +32,7 @@ void main() => runApp(
             body: Row(
               children: [
                 SideMenu(
-                  body: SideMenuBodyData(
+                  builder: (isOpen) => SideMenuBodyData(
                     header: const Text('Header'),
                     items: [
                       SideMenuItemData(
@@ -48,16 +48,16 @@ void main() => runApp(
                 Expanded(
                   child: Container(
                     color: Colors.white,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'body',
                       ),
                     ),
                   ),
                 ),
-                const SideMenu(
+                SideMenu(
                   position: SideMenuPosition.right,
-                  body: SideMenuBodyData(
+                  builder: (isOpen) => const SideMenuBodyData(
                     customChild: Text('Custom view'),
                   ),
                 ),
