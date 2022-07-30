@@ -30,17 +30,36 @@ void main() => runApp(
         home: Material(
           child: Scaffold(
             body: Row(
-              children: const [
-                SideMenu(),
+              children: [
+                SideMenu(
+                  body: SideMenuBodyData(
+                    header: const Text('Header'),
+                    items: [
+                      SideMenuItemData(
+                        isSelected: true,
+                        onTap: () {},
+                        title: 'Item 1',
+                        icon: Icons.home,
+                      ),
+                    ],
+                    footer: const Text('Footer'),
+                  ),
+                ),
                 Expanded(
-                  child: Center(
-                    child: Text(
-                      'body',
+                  child: Container(
+                    color: Colors.white,
+                    child: Center(
+                      child: Text(
+                        'body',
+                      ),
                     ),
                   ),
                 ),
-                SideMenu(
-                  leftSide: false,
+                const SideMenu(
+                  position: SideMenuPosition.right,
+                  body: SideMenuBodyData(
+                    customChild: Text('Custom view'),
+                  ),
                 ),
               ],
             ),
