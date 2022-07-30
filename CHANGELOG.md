@@ -1,3 +1,11 @@
+## 0.0.3
+* added controller
+* added badge
+* added tooltip
+* change body property to builder
+* send last menu state to builder
+* added background color property
+
 ## 0.0.2
 *  added body to side menu
 
