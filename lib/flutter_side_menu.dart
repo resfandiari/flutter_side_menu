@@ -8,3 +8,4 @@ export './src/component/resizer.dart';
 export './src/side_menu_position.dart';
 export './src/side_menu_body.dart';
 export './src/item/side_menu_item.dart';
+export './src/side_menu_controller.dart';

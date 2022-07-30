@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/component/resizer.dart';
 import 'package:flutter_side_menu/src/component/resizer_toggle.dart';
 import 'package:flutter_side_menu/src/side_menu_body.dart';
+import 'package:flutter_side_menu/src/side_menu_controller.dart';
 import 'package:flutter_side_menu/src/side_menu_mode.dart';
 import 'package:flutter_side_menu/src/side_menu_position.dart';
 import 'package:flutter_side_menu/src/side_menu_priority.dart';
@@ -14,6 +15,7 @@ class SideMenu extends StatefulWidget {
   const SideMenu({
     Key? key,
     required this.builder,
+    this.controller,
     this.mode = SideMenuMode.auto,
     this.priority = SideMenuPriority.mode,
     this.position = SideMenuPosition.left,
@@ -31,6 +33,7 @@ class SideMenu extends StatefulWidget {
         super(key: key);
 
   final SideMenuBuilder builder;
+  final SideMenuController? controller;
   final SideMenuMode mode;
   final SideMenuPriority priority;
   final SideMenuPosition position;
@@ -46,6 +49,35 @@ class SideMenu extends StatefulWidget {
 
 class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
   double _currentWidth = Constants.zeroWidth;
+
+  @override
+  void initState() {
+    if (widget.controller != null) {
+      widget.controller?.open = _openMenu;
+      widget.controller?.close = _closeMenu;
+      widget.controller?.toggle = _toggleMenu;
+    }
+    super.initState();
+  }
+
+  void _openMenu() {
+    setState(() {
+      _currentWidth = widget.maxWidth;
+    });
+  }
+
+  void _closeMenu() {
+    setState(() {
+      _currentWidth = widget.minWidth;
+    });
+  }
+
+  void _toggleMenu() {
+    setState(() {
+      _currentWidth =
+          _currentWidth == widget.minWidth ? widget.maxWidth : widget.minWidth;
+    });
+  }
 
   @override
   void didUpdateWidget(covariant SideMenu oldWidget) {
@@ -161,13 +193,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
       data: widget.resizerToggleData,
       rightArrow: _currentWidth == widget.minWidth,
       leftPosition: widget.position == SideMenuPosition.left,
-      onTap: () {
-        setState(() {
-          _currentWidth = _currentWidth == widget.minWidth
-              ? widget.maxWidth
-              : widget.minWidth;
-        });
-      },
+      onTap: () => _toggleMenu(),
     );
   }
 

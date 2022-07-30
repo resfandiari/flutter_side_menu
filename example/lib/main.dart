@@ -13,6 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _controller = SideMenuController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,6 +27,7 @@ class _MyAppState extends State<MyApp> {
         body: Row(
           children: [
             SideMenu(
+              controller: _controller,
               builder: (isOpen) {
                 return SideMenuBodyData(
                   header: const Text('Header'),
@@ -43,11 +46,21 @@ class _MyAppState extends State<MyApp> {
             Expanded(
               child: Container(
                 color: Colors.white,
-                child: Center(
-                  child: Text(
-                    'body',
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'body',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        _controller.toggle();
+                      },
+                      child: const Text('change side menu state'),
+                    )
+                  ],
                 ),
               ),
             ),
