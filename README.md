@@ -12,8 +12,21 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/resfandiari/flutter_side_menu">  
 </a>  
 </div>
+</br>
+**Flutter's full customizable side menu has been used as a directory for Related Pages, Navigation Items, Filter side and more.**
 
-**Flutter's full customizable side menu has been used as a directory for Related Pages, Navigation Items, and more.**
+#### Flutter Side Menu Screenshots
+
+<table>
+  <tr>
+    <td>Navigation Side</td>
+     <td>Filter Side</td>
+  </tr>
+  <tr>
+    <td><img src="https://drive.google.com/uc?id=1xhgI9dRxbnRmp6GqmqzhRM7YeUky8_Y7" ></td>
+    <td><img src="https://drive.google.com/uc?id=1VA-tZpn_wVCZ3gjq97yCJ_dSYdw6c-BU" ></td>
+  </tr>
+ </table>
 
 ## Usage
 
