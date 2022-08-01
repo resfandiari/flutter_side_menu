@@ -1,3 +1,7 @@
+## 0.0.4
+* separation of classes and data classes
+* fix file formatting issues
+
 ## 0.0.3
 * added controller
 * added badge
