@@ -1,30 +1,33 @@
+## 0.0.8
+* Add document
+
 ## 0.0.7
-* fix calculate width in mobile size
-* fix side menu customChild height
-* rename SideMenuBodyData to SideMenuData
+* Fix calculate width in mobile size
+* Fix side menu customChild height
+* Rename SideMenuBodyData to SideMenuData
 
 ## 0.0.6
-* changed side menu body isCompact property to isOpen
+* Changed side menu body isCompact property to isOpen
 
 ## 0.0.5
-* added currentWidth,maxWidth,minWidth to side menu builder data
-* add side menu item reference to accessible reference
-* fix bug side menu builder isOpen property
+* Add currentWidth,maxWidth,minWidth to side menu builder data
+* Add side menu item reference to accessible reference
+* Fix bug side menu builder isOpen property
 
 ## 0.0.4
-* separation of classes and data classes
-* fix file formatting issues
+* Separation of classes and data classes
+* Fix file formatting issues
 
 ## 0.0.3
-* added controller
-* added badge
-* added tooltip
-* change body property to builder
-* send last menu state to builder
-* added background color property
+* Add controller
+* Add badge
+* Add tooltip
+* Change body property to builder
+* Send last menu state to builder
+* Add background color property
 
 ## 0.0.2
-*  added body to side menu
+*  Add body to side menu
 
 ## 0.0.1
-*  initial release
+*  Initial release
