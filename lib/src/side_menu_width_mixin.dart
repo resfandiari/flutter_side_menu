@@ -44,7 +44,7 @@ mixin SideMenuWidthMixin {
     if (_isPossibleWidthChange()) {
       if (DeviceScreenType.isDesktop(width: deviceWidth)) {
         return maxWidth;
-      } else if (DeviceScreenType.isTablet(width: deviceWidth)) {
+      } else {
         return minWidth;
       }
     }
