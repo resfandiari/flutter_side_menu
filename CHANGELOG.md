@@ -1,3 +1,8 @@
+## 0.0.7
+* fix calculate width in mobile size
+* fix side menu customChild height
+* rename SideMenuBodyData to SideMenuData
+
 ## 0.0.6
 * changed side menu body isCompact property to isOpen
 
