@@ -1,3 +1,6 @@
+## 0.0.6
+* changed side menu body isCompact property to isOpen
+
 ## 0.0.5
 * added currentWidth,maxWidth,minWidth to side menu builder data
 * add side menu item reference to accessible reference
