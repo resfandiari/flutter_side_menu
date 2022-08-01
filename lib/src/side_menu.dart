@@ -34,7 +34,7 @@ class SideMenu extends StatefulWidget {
     this.backgroundColor = Constants.backgroundColor,
   })  : assert(minWidth >= 0.0),
         assert(maxWidth > 0.0),
-        assert(priority == SideMenuPriority.sizer && hasResizer),
+        assert(priority == SideMenuPriority.sizer ? hasResizer : true),
         assert(resizerData != null ? hasResizer : true),
         assert(resizerToggleData != null ? hasResizerToggle : true),
         super(key: key);
