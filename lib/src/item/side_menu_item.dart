@@ -7,12 +7,12 @@ import 'package:flutter_side_menu/src/utils/constants.dart';
 class SideMenuItem extends StatelessWidget {
   const SideMenuItem({
     Key? key,
-    required this.isCompact,
+    required this.isOpen,
     required this.minWidth,
     required this.data,
   }) : super(key: key);
   final SideMenuItemData data;
-  final bool isCompact;
+  final bool isOpen;
   final double minWidth;
 
   @override
@@ -83,7 +83,7 @@ class SideMenuItem extends StatelessWidget {
       return Row(
         children: [
           _icon(),
-          if (!isCompact)
+          if (isOpen)
             Expanded(
               child: _title(context: context),
             ),

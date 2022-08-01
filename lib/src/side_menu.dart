@@ -149,7 +149,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
         maxWidth: widget.maxWidth,
       ),
       child: SideMenuBody(
-        isCompact: _currentWidth == widget.minWidth,
+        isOpen: _currentWidth != widget.minWidth,
         minWidth: widget.minWidth,
         data: _builder(),
       ),

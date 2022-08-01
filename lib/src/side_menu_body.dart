@@ -6,11 +6,11 @@ class SideMenuBody extends StatelessWidget {
   const SideMenuBody({
     Key? key,
     required this.minWidth,
-    required this.isCompact,
+    required this.isOpen,
     required this.data,
   }) : super(key: key);
   final double minWidth;
-  final bool isCompact;
+  final bool isOpen;
   final SideMenuBodyData data;
 
   @override
@@ -27,7 +27,7 @@ class SideMenuBody extends StatelessWidget {
               final item = data.items![index];
               return SideMenuItem(
                 minWidth: minWidth,
-                isCompact: isCompact,
+                isOpen: isOpen,
                 data: item,
               );
             },
