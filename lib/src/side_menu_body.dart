@@ -17,7 +17,7 @@ class SideMenuBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       if (data.header != null) data.header!,
-      if (data.customChild != null) data.customChild!,
+      if (data.customChild != null) Expanded(child: data.customChild!),
       if (data.items != null)
         Expanded(
           child: ListView.builder(
