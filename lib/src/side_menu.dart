@@ -4,6 +4,7 @@ import 'package:flutter_side_menu/src/component/resizer_toggle.dart';
 import 'package:flutter_side_menu/src/data/resizer_data.dart';
 import 'package:flutter_side_menu/src/data/resizer_toggle_data.dart';
 import 'package:flutter_side_menu/src/data/side_menu_body_data.dart';
+import 'package:flutter_side_menu/src/data/side_menu_builder_data.dart';
 import 'package:flutter_side_menu/src/side_menu_body.dart';
 import 'package:flutter_side_menu/src/side_menu_controller.dart';
 import 'package:flutter_side_menu/src/side_menu_mode.dart';
@@ -12,7 +13,9 @@ import 'package:flutter_side_menu/src/side_menu_priority.dart';
 import 'package:flutter_side_menu/src/side_menu_width_mixin.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
-typedef SideMenuBuilder = SideMenuBodyData Function(bool isOpen);
+typedef SideMenuBuilder = SideMenuBodyData Function(
+  SideMenuBuilderData data,
+);
 
 class SideMenu extends StatefulWidget {
   const SideMenu({
@@ -148,9 +151,18 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
       child: SideMenuBody(
         isCompact: _currentWidth == widget.minWidth,
         minWidth: widget.minWidth,
-        data: widget.builder(_currentWidth == widget.minWidth),
+        data: _builder(),
       ),
     );
+  }
+
+  SideMenuBodyData _builder() {
+    return widget.builder(SideMenuBuilderData(
+      currentWidth: _currentWidth,
+      minWidth: widget.minWidth,
+      maxWidth: widget.maxWidth,
+      isOpen: _currentWidth != widget.minWidth,
+    ));
   }
 
   Widget _resizer() {
