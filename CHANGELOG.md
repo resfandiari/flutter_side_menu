@@ -1,3 +1,8 @@
+## 0.0.5
+* added currentWidth,maxWidth,minWidth to side menu builder data
+* add side menu item reference to accessible reference
+* fix bug side menu builder isOpen property
+
 ## 0.0.4
 * separation of classes and data classes
 * fix file formatting issues
