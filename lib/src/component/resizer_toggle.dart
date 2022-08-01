@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_side_menu/src/data/resizer_toggle_data.dart';
 import 'package:flutter_side_menu/src/utils/utils.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -71,18 +72,4 @@ class _ResizerToggleState extends State<ResizerToggle> with AnimationMixin {
       ),
     );
   }
-}
-
-class ResizerToggleData {
-  const ResizerToggleData({
-    this.iconColor = Colors.black,
-    this.topPosition = 20,
-    this.opacity = 0.3,
-    this.iconSize = 20,
-  })  : assert(topPosition >= 0.0),
-        assert(opacity >= 0.0),
-        assert(iconSize >= 0.0);
-
-  final Color iconColor;
-  final double topPosition, opacity, iconSize;
 }

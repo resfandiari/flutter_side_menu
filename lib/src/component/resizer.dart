@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_side_menu/src/data/resizer_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -58,16 +59,4 @@ class _ResizerState extends State<Resizer> with AnimationMixin {
       ),
     );
   }
-}
-
-class ResizerData {
-  const ResizerData({
-    this.resizerWidth = 3,
-    this.iconColor = Colors.black,
-    this.resizerColor = Colors.black12,
-    this.resizerHoverColor = Colors.blue,
-  }) : assert(resizerWidth >= 0.0);
-
-  final double resizerWidth;
-  final Color iconColor, resizerColor, resizerHoverColor;
 }

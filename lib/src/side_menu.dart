@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/component/resizer.dart';
 import 'package:flutter_side_menu/src/component/resizer_toggle.dart';
+import 'package:flutter_side_menu/src/data/resizer_data.dart';
+import 'package:flutter_side_menu/src/data/resizer_toggle_data.dart';
+import 'package:flutter_side_menu/src/data/side_menu_body_data.dart';
 import 'package:flutter_side_menu/src/side_menu_body.dart';
 import 'package:flutter_side_menu/src/side_menu_controller.dart';
 import 'package:flutter_side_menu/src/side_menu_mode.dart';

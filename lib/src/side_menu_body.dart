@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_side_menu/src/data/side_menu_body_data.dart';
 import 'package:flutter_side_menu/src/item/side_menu_item.dart';
 
 class SideMenuBody extends StatelessWidget {
@@ -35,16 +36,4 @@ class SideMenuBody extends StatelessWidget {
       if (data.footer != null) data.footer!,
     ]);
   }
-}
-
-class SideMenuBodyData {
-  const SideMenuBodyData({
-    this.customChild,
-    this.header,
-    this.footer,
-    this.items,
-  }) : assert(customChild != null || items != null);
-
-  final Widget? customChild, header, footer;
-  final List<SideMenuItemData>? items;
 }
