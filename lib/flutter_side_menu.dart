@@ -1,6 +1,7 @@
 library flutter_side_menu;
 
 export './src/side_menu.dart';
+export './src/item/side_menu_item.dart';
 export './src/side_menu_mode.dart';
 export './src/side_menu_priority.dart';
 export './src/side_menu_position.dart';
