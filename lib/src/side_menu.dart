@@ -13,9 +13,9 @@ import 'package:flutter_side_menu/src/side_menu_priority.dart';
 import 'package:flutter_side_menu/src/side_menu_width_mixin.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
-typedef SideMenuBuilder = SideMenuData Function(
-  SideMenuBuilderData data,
-);
+/// Signature for the `builder` function which take the `SideMenuBuilderData`
+/// is responsible for returning a widget which is to be rendered.
+typedef SideMenuBuilder = SideMenuData Function(SideMenuBuilderData data);
 
 class SideMenu extends StatefulWidget {
   const SideMenu({
@@ -29,25 +29,103 @@ class SideMenu extends StatefulWidget {
     this.maxWidth = Constants.maxWidth,
     this.hasResizer = true,
     this.hasResizerToggle = true,
-    this.backgroundColor = Constants.backgroundColor,
     this.resizerData,
     this.resizerToggleData,
+    this.backgroundColor = Constants.backgroundColor,
   })  : assert(minWidth >= 0.0),
         assert(maxWidth > 0.0),
+        assert(priority == SideMenuPriority.sizer && hasResizer),
         assert(resizerData != null ? hasResizer : true),
         assert(resizerToggleData != null ? hasResizerToggle : true),
         super(key: key);
 
+  /// The [builder] function which will be invoked on each widget build.
+  /// The [builder] takes the `SideMenuBuilderData` and must return
+  /// a [SideMenuData] that includes headers, footers, items, or custom child                                       .
+  ///
+  /// You must provide items or customChild.
+  ///
+  /// ```dart
+  /// SideMenu(
+  ///   builder: (data) => SideMenuData(
+  ///     header: Container(
+  ///     items: [
+  ///       SideMenuItemData(
+  ///         isSelected: true,
+  ///         onTap: () {},
+  ///         title: 'Item 1',
+  ///         icon: Icons.home,
+  ///       ),
+  ///     ],
+  ///     footer: const Text('Footer'),
+  ///   ),
+  /// ),
+  /// ```dart
   final SideMenuBuilder builder;
+
+  /// The [controller] that can be used to open, close, or toggle side menu.
   final SideMenuController? controller;
+
+  /// The [SideMenuMode] which is auto, open or compact.
+  ///
+  /// In [SideMenuMode.auto], the side menu is visible when the screen is
+  /// wide enough and changes to compact mode when the screen is narrow.
+  ///
+  /// In [SideMenuMode.compact], the side menu closed based on [minWidth] value.
+  ///
+  /// In [SideMenuMode.open], the side menu opens based on [maxWidth] value.
   final SideMenuMode mode;
+
+  /// The [SideMenuPriority] which is mode or sizer.
+  ///
+  /// In [SideMenuPriority.mode], the side menu width change based on [mode]
+  /// value.
+  ///
+  /// In [SideMenuPriority.sizer], the side menu width not change if user set
+  /// custom size with [Resizer].
+  /// meaning of custom size is size that user want
+  /// and it's opposing [minWidth] and [maxWidth] values.
+  ///
+  /// The [SideMenuPriority.sizer] available only if [hasResizer] is true.
   final SideMenuPriority priority;
+
+  /// The [SideMenuPosition] which is left or right.
   final SideMenuPosition position;
+
+  /// The [minWidth] and [maxWidth] values which are used to determine the
+  /// side menu width.
+  ///
+  /// The [minWidth] value is used to determine the side menu width in the
+  /// smallest case.
+  ///
+  /// It's used to determine the side menu width in [SideMenuMode.open] or
+  /// [SideMenuMode.auto].
+  ///
+  /// The [maxWidth] value is used to determine the side menu width in the
+  /// largest case
+  ///
+  /// It's used to determine the side menu width in [SideMenuMode.compact]
+  /// or [SideMenuMode.auto].
   final double minWidth, maxWidth;
-  final bool hasResizer, hasResizerToggle;
-  final Color backgroundColor;
+
+  /// The [hasResizer] enable [Resizer] widget for side menu.
+  /// With [Resizer] the side menu width can be customized by the user.
+  final bool hasResizer;
+
+  /// The [ResizerData] that can set custom style for a [Resizer].
   final ResizerData? resizerData;
+
+  /// The [hasResizerToggle] enable [ResizerToggle] widget for side menu.
+  /// With [ResizerToggle] button you can toggle the width of the side menu
+  /// between [minWidth] or [maxWidth].
+  final bool hasResizerToggle;
+
+  /// The [resizerToggleData] that can set custom style for a [ResizerToggle].
   final ResizerToggleData? resizerToggleData;
+
+  /// The [backgroundColor] it's used to determine the side menu background
+  /// color.
+  final Color backgroundColor;
 
   @override
   State<SideMenu> createState() => _SideMenuState();

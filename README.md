@@ -12,15 +12,50 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/resfandiari/flutter_side_menu">  
 </a>  
 </div>
-Caution: This project is still under development.
+
+**Flutter's full customizable side menu has been used as a directory for Related Pages, Navigation Items, and more.**
 
 ## Usage
 
-To use this plugin, add `flutter_side_menu` as a [dependency in your pubspec.yaml file](https://flutter.dev/platform-plugins/).
+### Add dependency
+
+Please check the latest version before installation.
+If there is any problem with the new version, please use the previous version
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  # add flutter_side_menu
+  flutter_side_menu: ^{latest version}
+```
+
+### Add the following imports to your Dart code
+
+```dart
+import 'package:flutter_side_menu/flutter_side_menu.dart';
+```
+
+### Property
+
+| Property        | Type         | Default Value | Description                                                                 |
+| --------------- | ------------ | ------------- | --------------------------------------------------------------------------- |
+| builder      | SideMenuBuilder         | null          | Return 'SideMenuData' that includes headers, footers, items, or custom child                                             |
+| controller      | SideMenuController         | null | The 'controller' that can be used to open, close, or toggle side menu.                    |
+| mode         | SideMenuMode     | SideMenuMode.auto          | The 'SideMenuMode' which is auto, open or compact and can determine the menu state  |
+| priority           | SideMenuPriority       | SideMenuPriority.mode          | The 'SideMenuPriority' which is mode or sizer. in sizer mode the side menu width not change if user set custom size with 'Resizer'   |
+| position   | SideMenuPosition     | SideMenuPosition.left     | The 'SideMenuPosition' which is left or right.              |
+| minWidth     | double  | 50.0      | The 'minWidth' value is used to determine the side menu width in the smallest case.                                                         |
+| maxWidth | double         | 250.0         | The 'maxWidth' value is used to determine the side menu width in the largest case.                                                    |
+| hasResizer    | bool         | true         | The 'hasResizer' enable 'Resizer' widget for side menu. With 'Resizer' the side menu width can be customized by the user.      |
+| resizerData         | ResizerData | ResizerData()          | The 'ResizerData' that can set custom style for a 'Resizer'.         |
+| hasResizerToggle         | bool | true          | The 'hasResizerToggle' enable 'ResizerToggle' widget for side menu. With 'ResizerToggle' button you can toggle the width of the side menu between 'minWidth' or 'maxWidth'.         |
+| resizerToggleData         | ResizerToggleData | ResizerToggleData()          | The 'resizerToggleData' that can set custom style for a 'ResizerToggle'.         |
+| backgroundColor         | Color | Color(0xffffffff)          | The 'backgroundColor' it's used to determine the side menu background color         |
+
 
 ### Example
 
-<?code-excerpt "basic.dart (basic-example)"?>
 ``` dart
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/flutter_side_menu.dart';
