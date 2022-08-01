@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_side_menu/src/data/side_menu_body_data.dart';
+import 'package:flutter_side_menu/src/data/side_menu_data.dart';
 import 'package:flutter_side_menu/src/item/side_menu_item.dart';
 
 class SideMenuBody extends StatelessWidget {
@@ -11,7 +11,7 @@ class SideMenuBody extends StatelessWidget {
   }) : super(key: key);
   final double minWidth;
   final bool isOpen;
-  final SideMenuBodyData data;
+  final SideMenuData data;
 
   @override
   Widget build(BuildContext context) {

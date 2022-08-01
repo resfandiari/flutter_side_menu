@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 
-class SideMenuBodyData {
-  const SideMenuBodyData({
+class SideMenuData {
+  const SideMenuData({
     this.customChild,
     this.header,
     this.footer,

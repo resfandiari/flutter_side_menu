@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
             SideMenu(
               controller: _controller,
               builder: (data) {
-                return SideMenuBodyData(
+                return SideMenuData(
                   header: const Text('Header'),
                   items: [
                     SideMenuItemData(
@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
             ),
             SideMenu(
               position: SideMenuPosition.right,
-              builder: (data) => const SideMenuBodyData(
+              builder: (data) => const SideMenuData(
                 customChild: Text('custom view'),
               ),
             ),
