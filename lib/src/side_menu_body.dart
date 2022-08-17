@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_data.dart';
-import 'package:flutter_side_menu/src/item/side_menu_item.dart';
+import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
+import 'package:flutter_side_menu/src/item/export.dart';
 
 class SideMenuBody extends StatelessWidget {
   const SideMenuBody({
@@ -24,12 +25,23 @@ class SideMenuBody extends StatelessWidget {
             controller: ScrollController(),
             itemCount: data.items!.length,
             itemBuilder: (context, index) {
-              final item = data.items![index];
-              return SideMenuItem(
-                minWidth: minWidth,
-                isOpen: isOpen,
-                data: item,
-              );
+              final SideMenuItemData item = data.items![index];
+              if (item is SideMenuItemDataTile) {
+                return SideMenuItemTile(
+                  minWidth: minWidth,
+                  isOpen: isOpen,
+                  data: item,
+                );
+              } else if (item is SideMenuItemDataTitle) {
+                return SideMenuItemTitle(
+                  data: item,
+                );
+              } else if (item is SideMenuItemDataDivider) {
+                return SideMenuItemDivider(
+                  data: item,
+                );
+              }
+              return const SizedBox.shrink();
             },
           ),
         ),

@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
-class SideMenuItem extends StatelessWidget {
-  const SideMenuItem({
+class SideMenuItemTile extends StatelessWidget {
+  const SideMenuItemTile({
     Key? key,
     required this.isOpen,
     required this.minWidth,
     required this.data,
   }) : super(key: key);
-  final SideMenuItemData data;
+  final SideMenuItemDataTile data;
   final bool isOpen;
   final double minWidth;
 
@@ -107,11 +107,7 @@ class SideMenuItem extends StatelessWidget {
     return SizedBox(
       width: minWidth - data.margin.horizontal,
       height: double.maxFinite,
-      child: Icon(
-        data.icon!,
-        color: data.isSelected ? data.selectedColor : data.unSelectedColor,
-        size: data.iconSize,
-      ),
+      child: data.icon,
     );
   }
 

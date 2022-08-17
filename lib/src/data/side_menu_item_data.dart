@@ -2,8 +2,12 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
-class SideMenuItemData {
-  const SideMenuItemData({
+abstract class SideMenuItemData {
+  const SideMenuItemData();
+}
+
+class SideMenuItemDataTile extends SideMenuItemData {
+  const SideMenuItemDataTile({
     required this.isSelected,
     required this.onTap,
     this.icon,
@@ -17,7 +21,6 @@ class SideMenuItemData {
       Constants.itemSelectedLineHeight,
     ),
     this.itemHeight = Constants.itemHeight,
-    this.iconSize = Constants.itemIconSize,
     this.margin = Constants.itemMargin,
     this.borderRadius = Constants.radius_4,
     this.selectedColor = Constants.selectedColor,
@@ -28,8 +31,8 @@ class SideMenuItemData {
       end: Constants.badgeSpaceFromEnd,
     ),
   })  : assert(itemHeight >= 0.0),
-        assert(iconSize >= 0.0),
-        assert(icon != null || title != null);
+        assert(icon != null || title != null),
+        super();
 
   final bool isSelected, hasSelectedLine;
   final void Function() onTap;
@@ -39,12 +42,34 @@ class SideMenuItemData {
   final String? tooltip;
   final Widget? badgeContent;
   final BadgePosition badgePosition;
-  final IconData? icon;
-  final double itemHeight, iconSize;
+  final Widget? icon;
+  final double itemHeight;
   final EdgeInsetsDirectional margin;
   final BorderRadius borderRadius;
   final Color selectedColor,
       unSelectedColor,
       highlightSelectedColor,
       badgeColor;
+}
+
+class SideMenuItemDataTitle extends SideMenuItemData {
+  const SideMenuItemDataTitle({
+    required this.title,
+    this.titleStyle,
+    this.padding = Constants.itemMargin,
+  }) : super();
+
+  final String title;
+  final TextStyle? titleStyle;
+  final EdgeInsetsDirectional padding;
+}
+
+class SideMenuItemDataDivider extends SideMenuItemData {
+  const SideMenuItemDataDivider({
+    required this.divider,
+    this.padding = Constants.itemMargin,
+  }) : super();
+
+  final Divider divider;
+  final EdgeInsetsDirectional padding;
 }

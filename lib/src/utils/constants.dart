@@ -8,7 +8,6 @@ class Constants {
   static const double itemHeight = 40.0;
   static const double itemSelectedLineHeight = 20.0;
   static const double itemSelectedLineWidth = 4.0;
-  static const double itemIconSize = 24.0;
 
   /// Durations
   static const Duration duration = Duration(milliseconds: 200);
