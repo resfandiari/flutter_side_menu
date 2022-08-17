@@ -1,6 +1,6 @@
 name: flutter_side_menu
 description: Flutter's full customizable side menu has been used as a directory for Related Pages, Navigation Items, Filter side and more
-version: 0.0.9
+version: 0.1.0
 homepage: https://github.com/resfandiari/flutter_side_menu
 
 environment:
@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  simple_animations: ^4.2.0
   auto_size_text: ^3.0.0
   badges: ^2.0.3
 

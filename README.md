@@ -20,7 +20,8 @@
 
 <table>
   <tr>
-    <td>Navigation Side</td>
+    <td><a href="https://github.com/resfandiari/flutter_side_menu/tree/main/example/lib/navigation_side.dart">
+Navigation Side    </a></td>
      <td>Filter Side</td>
   </tr>
   <tr>
@@ -84,11 +85,11 @@ void main() => runApp(
                   builder: (data) => SideMenuData(
                     header: const Text('Header'),
                     items: [
-                      SideMenuItemData(
+                      SideMenuItemDataTile(
                         isSelected: true,
                         onTap: () {},
                         title: 'Item 1',
-                        icon: Icons.home,
+                        icon: const Icon(Icons.home),
                       ),
                     ],
                     footer: const Text('Footer'),

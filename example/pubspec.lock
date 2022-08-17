@@ -82,7 +82,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.9"
+    version: "0.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -123,13 +123,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
-  simple_animations:
-    dependency: transitive
-    description:
-      name: simple_animations
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.2.0"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -1,3 +1,10 @@
+## 0.1.0
+* Breaking changes: rename SideMenuItemData to SideMenuItemDataTile
+* Breaking changes: use widget as SideMenuItemData icon
+* Add title widget to SideMenuData items
+* Add divider widget to SideMenuData items
+* Implement "Navigation Side" example
+
 ## 0.0.9
 * Add screenshots
 * Fix assert error
