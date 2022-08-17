@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/resizer_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
-import 'package:simple_animations/simple_animations.dart';
 
 class Resizer extends StatefulWidget {
   const Resizer({
@@ -18,16 +17,11 @@ class Resizer extends StatefulWidget {
   State<Resizer> createState() => _ResizerState();
 }
 
-class _ResizerState extends State<Resizer> with AnimationMixin {
-  late Animation<Color?> _colorAnimation;
+class _ResizerState extends State<Resizer> {
+  bool _visible = false;
 
   @override
   void initState() {
-    _colorAnimation = ColorTween(
-      begin: widget.data.resizerColor,
-      end: widget.data.resizerHoverColor,
-    ).animate(controller);
-
     super.initState();
   }
 
@@ -44,14 +38,15 @@ class _ResizerState extends State<Resizer> with AnimationMixin {
           mouseCursor: SystemMouseCursors.resizeLeftRight,
           onTap: () {},
           onHover: (hover) {
-            if (hover) {
-              controller.play(duration: Constants.duration);
-            } else {
-              controller.playReverse(duration: Constants.duration);
-            }
+            setState(() {
+              _visible = hover;
+            });
           },
-          child: Container(
-            color: _colorAnimation.value,
+          child: AnimatedContainer(
+            color: _visible
+                ? widget.data.resizerHoverColor
+                : widget.data.resizerColor,
+            duration: Constants.duration,
             width: widget.data.resizerWidth,
             height: MediaQuery.of(context).size.height,
           ),
