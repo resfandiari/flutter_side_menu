@@ -32,11 +32,11 @@ class _MyAppState extends State<MyApp> {
                 return SideMenuData(
                   header: const Text('Header'),
                   items: [
-                    SideMenuItemData(
+                    SideMenuItemDataTile(
                       isSelected: true,
                       onTap: () {},
                       title: 'Item 1',
-                      icon: Icons.home,
+                      icon: const Icon(Icons.home),
                     ),
                   ],
                   footer: const Text('Footer'),
