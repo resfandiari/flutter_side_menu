@@ -1,3 +1,6 @@
+## 0.1.1
+* Updated minimum dependencies to Dart >=2.18.0 and Flutter >= 3.3.0.
+
 ## 0.1.0
 * Breaking changes: rename SideMenuItemData to SideMenuItemDataTile
 * Breaking changes: use widget as SideMenuItemData icon
