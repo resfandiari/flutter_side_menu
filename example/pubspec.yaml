@@ -31,6 +31,7 @@ dependencies:
     sdk: flutter
   flutter_side_menu:
     path: ../
+  go_router: ^5.1.5
 
 dev_dependencies:
   flutter_test:
