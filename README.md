@@ -1,6 +1,6 @@
 <div align="center"> 
 <h2 align="center">Flutter Side Menu</h2> 
-<img height="160" align="center"  alt="logo" src="assets/logo.png"/>
+<img height="160" align="center"  alt="logo" src="https://raw.githubusercontent.com/resfandiari/flutter_side_menu/main/assets/logo.png"/>
 </br>
 <a href="https://github.com/resfandiari/flutter_side_menu/blob/main/LICENSE">  
   <img alt="GitHub" src="https://img.shields.io/github/license/resfandiari/flutter_side_menu"> 
@@ -25,8 +25,8 @@ Navigation Side    </a></td>
      <td>Filter Side</td>
   </tr>
   <tr>
-    <td><img src="assets/side_menu.png" ></td>
-    <td><img src="assets/side_filter.png" ></td>
+    <td><img src="https://raw.githubusercontent.com/resfandiari/flutter_side_menu/main/assets/side_menu.png" ></td>
+    <td><img src="https://raw.githubusercontent.com/resfandiari/flutter_side_menu/main/assets/side_filter.png" ></td>
   </tr>
  </table>
 
