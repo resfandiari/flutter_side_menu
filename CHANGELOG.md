@@ -1,4 +1,4 @@
-## 0.1.2
+## 0.1.3
 * Add simple example
 * Add go_router example
 * Fix document assets path
