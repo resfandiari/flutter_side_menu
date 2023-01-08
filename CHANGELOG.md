@@ -1,3 +1,8 @@
+## 0.1.2
+* Add simple example
+* Add go_router example
+* Fix document assets path
+
 ## 0.1.1
 * Updated minimum dependencies to Dart >=2.18.0 and Flutter >= 3.3.0.
 
