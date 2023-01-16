@@ -132,7 +132,7 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     return AutoSizeText(
       widget.data.title!,
       style: titleStyle?.copyWith(
-        color: _isHovering ? widget.data.hoverColor : widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
+        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
       ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
