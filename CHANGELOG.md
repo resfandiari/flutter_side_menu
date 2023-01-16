@@ -1,3 +1,7 @@
+## 0.2.0
+* Add optional hover color style property
+* Add more left side menu items to example
+
 ## 0.1.3
 * Add simple example
 * Add go_router example
