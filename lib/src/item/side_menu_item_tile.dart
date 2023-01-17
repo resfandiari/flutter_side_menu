@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
-class SideMenuItemTile extends StatelessWidget {
+class SideMenuItemTile extends StatefulWidget {
   const SideMenuItemTile({
     Key? key,
     required this.isOpen,
@@ -16,18 +16,34 @@ class SideMenuItemTile extends StatelessWidget {
   final double minWidth;
 
   @override
+  State<SideMenuItemTile> createState() => _SideMenuItemTileState();
+}
+
+class _SideMenuItemTileState extends State<SideMenuItemTile> {
+  bool _isHovering = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: data.itemHeight,
-      margin: data.margin,
+      height: widget.data.itemHeight,
+      margin: widget.data.margin,
       decoration: BoxDecoration(
-        color: data.isSelected ? data.highlightSelectedColor : null,
-        borderRadius: data.borderRadius,
+        color: _isHovering
+            ? widget.data.hoverColor
+            : widget.data.isSelected
+                ? widget.data.highlightSelectedColor
+                : null,
+        borderRadius: widget.data.borderRadius,
       ),
       child: InkWell(
-        onTap: data.onTap,
-        borderRadius: data.borderRadius,
+        onTap: widget.data.onTap,
+        borderRadius: widget.data.borderRadius,
         child: _createView(context: context),
+        onHover: (hover) {
+          setState(() {
+            _isHovering = hover;
+          });
+        },
       ),
     );
   }
@@ -43,17 +59,15 @@ class SideMenuItemTile extends StatelessWidget {
       ),
     );
 
-    return data.isSelected && data.hasSelectedLine
-        ? _hasSelectedLine(child: content)
-        : content;
+    return widget.data.isSelected && widget.data.hasSelectedLine ? _hasSelectedLine(child: content) : content;
   }
 
   Widget _hasTooltip({
     required Widget child,
   }) {
-    if (data.tooltip != null) {
+    if (widget.data.tooltip != null) {
       return Tooltip(
-        message: data.tooltip,
+        message: widget.data.tooltip,
         child: child,
       );
     }
@@ -63,11 +77,11 @@ class SideMenuItemTile extends StatelessWidget {
   Widget _hasBadge({
     required Widget child,
   }) {
-    if (data.badgeContent != null) {
+    if (widget.data.badgeContent != null) {
       return Badge(
-        badgeContent: data.badgeContent!,
-        badgeColor: data.badgeColor,
-        position: data.badgePosition,
+        badgeContent: widget.data.badgeContent!,
+        badgeColor: widget.data.badgeColor,
+        position: widget.data.badgePosition,
         child: child,
       );
     }
@@ -77,13 +91,13 @@ class SideMenuItemTile extends StatelessWidget {
   Widget _content({
     required BuildContext context,
   }) {
-    final hasIcon = data.icon != null;
-    final hasTitle = data.title != null;
+    final hasIcon = widget.data.icon != null;
+    final hasTitle = widget.data.title != null;
     if (hasIcon && hasTitle) {
       return Row(
         children: [
           _icon(),
-          if (isOpen)
+          if (widget.isOpen)
             Expanded(
               child: _title(context: context),
             ),
@@ -105,21 +119,20 @@ class SideMenuItemTile extends StatelessWidget {
 
   Widget _icon() {
     return SizedBox(
-      width: minWidth - data.margin.horizontal,
+      width: widget.minWidth - widget.data.margin.horizontal,
       height: double.maxFinite,
-      child: data.icon,
+      child: widget.data.icon,
     );
   }
 
   Widget _title({
     required BuildContext context,
   }) {
-    final TextStyle? titleStyle =
-        data.titleStyle ?? Theme.of(context).textTheme.bodyText1;
+    final TextStyle? titleStyle = widget.data.titleStyle ?? Theme.of(context).textTheme.bodyText1;
     return AutoSizeText(
-      data.title!,
+      widget.data.title!,
       style: titleStyle?.copyWith(
-        color: data.isSelected ? data.selectedColor : data.unSelectedColor,
+        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
       ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
@@ -128,9 +141,9 @@ class SideMenuItemTile extends StatelessWidget {
 
   Widget _selectedLine() {
     return SizedBox.fromSize(
-      size: data.selectedLineSize,
+      size: widget.data.selectedLineSize,
       child: ColoredBox(
-        color: data.isSelected ? data.selectedColor : data.unSelectedColor,
+        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
       ),
     );
   }

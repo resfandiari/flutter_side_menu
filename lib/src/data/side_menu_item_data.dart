@@ -26,6 +26,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.selectedColor = Constants.selectedColor,
     this.unSelectedColor = Constants.unSelectedColor,
     this.highlightSelectedColor = Constants.highlightSelectedColor,
+    this.hoverColor = Constants.hoverColor,
     this.badgeColor = Constants.selectedColor,
     this.badgePosition = const BadgePosition(
       end: Constants.badgeSpaceFromEnd,
@@ -49,6 +50,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final Color selectedColor,
       unSelectedColor,
       highlightSelectedColor,
+      hoverColor,
       badgeColor;
 }
 

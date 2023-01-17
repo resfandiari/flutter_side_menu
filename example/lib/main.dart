@@ -28,15 +28,36 @@ class _MyAppState extends State<MyApp> {
           children: [
             SideMenu(
               controller: _controller,
+              backgroundColor: Colors.blueGrey,
               builder: (data) {
                 return SideMenuData(
                   header: const Text('Header'),
                   items: [
                     SideMenuItemDataTile(
-                      isSelected: true,
+                      isSelected: false,
                       onTap: () {},
                       title: 'Item 1',
+                      hoverColor: Colors.blue,
+                      titleStyle: const TextStyle(color: Colors.white),
                       icon: const Icon(Icons.home),
+                    ),
+                    SideMenuItemDataTile(
+                      isSelected: true,
+                      onTap: () {},
+                      title: 'Item 2',
+                      icon: const Icon(Icons.table_bar),
+                    ),
+                    SideMenuItemDataTile(
+                      isSelected: false,
+                      onTap: () {},
+                      title: 'Item 3',
+                      icon: const Icon(Icons.play_arrow),
+                    ),
+                    SideMenuItemDataTile(
+                      isSelected: false,
+                      onTap: () {},
+                      title: 'Item 4',
+                      icon: const Icon(Icons.car_crash),
                     ),
                   ],
                   footer: const Text('Footer'),
