@@ -27,10 +27,8 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.unSelectedColor = Constants.unSelectedColor,
     this.highlightSelectedColor = Constants.highlightSelectedColor,
     this.hoverColor = Constants.hoverColor,
-    this.badgeColor = Constants.selectedColor,
-    this.badgePosition = const BadgePosition(
-      end: Constants.badgeSpaceFromEnd,
-    ),
+    this.badgePosition,
+    this.badgeStyle,
   })  : assert(itemHeight >= 0.0),
         assert(icon != null || title != null),
         super();
@@ -42,7 +40,8 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final TextStyle? titleStyle;
   final String? tooltip;
   final Widget? badgeContent;
-  final BadgePosition badgePosition;
+  final BadgePosition? badgePosition;
+  final BadgeStyle? badgeStyle;
   final Widget? icon;
   final double itemHeight;
   final EdgeInsetsDirectional margin;
@@ -50,8 +49,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final Color selectedColor,
       unSelectedColor,
       highlightSelectedColor,
-      hoverColor,
-      badgeColor;
+      hoverColor;
 }
 
 class SideMenuItemDataTitle extends SideMenuItemData {

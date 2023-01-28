@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
@@ -59,7 +59,9 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
       ),
     );
 
-    return widget.data.isSelected && widget.data.hasSelectedLine ? _hasSelectedLine(child: content) : content;
+    return widget.data.isSelected && widget.data.hasSelectedLine
+        ? _hasSelectedLine(child: content)
+        : content;
   }
 
   Widget _hasTooltip({
@@ -78,10 +80,10 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     required Widget child,
   }) {
     if (widget.data.badgeContent != null) {
-      return Badge(
-        badgeContent: widget.data.badgeContent!,
-        badgeColor: widget.data.badgeColor,
-        position: widget.data.badgePosition,
+      return badges.Badge(
+        badgeContent: Center(child: widget.data.badgeContent!),
+        badgeStyle: widget.data.badgeStyle ?? Constants.badgeStyle,
+        position: widget.data.badgePosition ?? Constants.badgePosition,
         child: child,
       );
     }
@@ -128,11 +130,14 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
   Widget _title({
     required BuildContext context,
   }) {
-    final TextStyle? titleStyle = widget.data.titleStyle ?? Theme.of(context).textTheme.bodyText1;
+    final TextStyle? titleStyle =
+        widget.data.titleStyle ?? Theme.of(context).textTheme.bodyLarge;
     return AutoSizeText(
       widget.data.title!,
       style: titleStyle?.copyWith(
-        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
+        color: widget.data.isSelected
+            ? widget.data.selectedColor
+            : widget.data.unSelectedColor,
       ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
@@ -143,7 +148,9 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     return SizedBox.fromSize(
       size: widget.data.selectedLineSize,
       child: ColoredBox(
-        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
+        color: widget.data.isSelected
+            ? widget.data.selectedColor
+            : widget.data.unSelectedColor,
       ),
     );
   }
