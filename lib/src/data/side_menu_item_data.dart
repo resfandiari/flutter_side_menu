@@ -22,11 +22,11 @@ class SideMenuItemDataTile extends SideMenuItemData {
     ),
     this.itemHeight = Constants.itemHeight,
     this.margin = Constants.itemMargin,
-    this.borderRadius = Constants.radius_4,
-    this.selectedColor = Constants.selectedColor,
-    this.unSelectedColor = Constants.unSelectedColor,
-    this.highlightSelectedColor = Constants.highlightSelectedColor,
-    this.hoverColor = Constants.hoverColor,
+    this.borderRadius,
+    this.selectedColor,
+    this.unSelectedColor,
+    this.highlightSelectedColor,
+    this.hoverColor,
     this.badgePosition,
     this.badgeStyle,
   })  : assert(itemHeight >= 0.0),
@@ -45,11 +45,11 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final Widget? icon;
   final double itemHeight;
   final EdgeInsetsDirectional margin;
-  final BorderRadius borderRadius;
-  final Color selectedColor,
-      unSelectedColor,
+  final BorderRadiusGeometry? borderRadius;
+  final Color? hoverColor,
       highlightSelectedColor,
-      hoverColor;
+      selectedColor,
+      unSelectedColor;
 }
 
 class SideMenuItemDataTitle extends SideMenuItemData {
