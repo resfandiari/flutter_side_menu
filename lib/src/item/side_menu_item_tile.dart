@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
@@ -20,32 +20,42 @@ class SideMenuItemTile extends StatefulWidget {
 }
 
 class _SideMenuItemTileState extends State<SideMenuItemTile> {
-  bool _isHovering = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       height: widget.data.itemHeight,
       margin: widget.data.margin,
-      decoration: BoxDecoration(
-        color: _isHovering
-            ? widget.data.hoverColor
-            : widget.data.isSelected
-                ? widget.data.highlightSelectedColor
-                : null,
-        borderRadius: widget.data.borderRadius,
+      decoration: ShapeDecoration(
+        shape: shape(context),
+        color: widget.data.isSelected
+            ? widget.data.highlightSelectedColor ?? Theme.of(context).colorScheme.secondaryContainer
+            : null,
       ),
-      child: InkWell(
-        onTap: widget.data.onTap,
-        borderRadius: widget.data.borderRadius,
-        child: _createView(context: context),
-        onHover: (hover) {
-          setState(() {
-            _isHovering = hover;
-          });
-        },
+      child: Material(
+        color: Colors.transparent,
+        clipBehavior: Clip.hardEdge,
+        shape: shape(context),
+        child: InkWell(
+          onTap: widget.data.onTap,
+          hoverColor: widget.data.hoverColor,
+          child: _createView(context: context),
+        ),
       ),
     );
+  }
+
+  OutlinedBorder shape(BuildContext context) {
+    return widget.data.borderRadius != null
+        ? RoundedRectangleBorder(borderRadius: widget.data.borderRadius!)
+        : Theme.of(context).useMaterial3
+            ? const StadiumBorder()
+            : RoundedRectangleBorder(borderRadius: BorderRadius.circular(4));
+  }
+
+  Color getSelectedColor() {
+    return widget.data.isSelected
+        ? widget.data.selectedColor ?? Theme.of(context).colorScheme.onSecondaryContainer
+        : widget.data.unSelectedColor ?? Theme.of(context).colorScheme.onSurfaceVariant;
   }
 
   Widget _createView({
@@ -78,10 +88,10 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     required Widget child,
   }) {
     if (widget.data.badgeContent != null) {
-      return Badge(
-        badgeContent: widget.data.badgeContent!,
-        badgeColor: widget.data.badgeColor,
-        position: widget.data.badgePosition,
+      return badges.Badge(
+        badgeContent: Center(child: widget.data.badgeContent!),
+        badgeStyle: widget.data.badgeStyle ?? Constants.badgeStyle,
+        position: widget.data.badgePosition ?? Constants.badgePosition,
         child: child,
       );
     }
@@ -118,22 +128,25 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
   }
 
   Widget _icon() {
-    return SizedBox(
-      width: widget.minWidth - widget.data.margin.horizontal,
-      height: double.maxFinite,
-      child: widget.data.icon,
-    );
+    return widget.data.icon != null
+        ? SizedBox(
+            width: widget.minWidth - widget.data.margin.horizontal,
+            height: double.maxFinite,
+            child: IconTheme(
+              data: Theme.of(context).iconTheme.copyWith(color: getSelectedColor()),
+              child: widget.data.icon!,
+            ),
+          )
+        : const SizedBox.shrink();
   }
 
   Widget _title({
     required BuildContext context,
   }) {
-    final TextStyle? titleStyle = widget.data.titleStyle ?? Theme.of(context).textTheme.bodyText1;
+    final TextStyle? titleStyle = widget.data.titleStyle ?? Theme.of(context).textTheme.bodyLarge;
     return AutoSizeText(
       widget.data.title!,
-      style: titleStyle?.copyWith(
-        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
-      ),
+      style: titleStyle?.copyWith(color: getSelectedColor()),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
@@ -143,7 +156,7 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     return SizedBox.fromSize(
       size: widget.data.selectedLineSize,
       child: ColoredBox(
-        color: widget.data.isSelected ? widget.data.selectedColor : widget.data.unSelectedColor,
+        color: getSelectedColor(),
       ),
     );
   }

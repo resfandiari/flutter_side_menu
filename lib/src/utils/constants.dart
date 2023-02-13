@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -14,17 +15,12 @@ class Constants {
 
   /// Colors
   static const Color selectedColor = Color(0xff0055c3);
-  static const Color highlightSelectedColor = Color(0xffe6effb);
-  static const Color hoverColor = Colors.transparent;
-  static const Color unSelectedColor = Color(0xff8e8e8e);
-  static const Color backgroundColor = Color(0xffffffff);
 
   /// Padding
   static const EdgeInsetsDirectional textStartPadding =
       EdgeInsetsDirectional.only(
     start: 16,
   );
-  static const EdgeInsetsDirectional zeroPadding = EdgeInsetsDirectional.zero;
 
   /// Margin
   static const EdgeInsetsDirectional itemMargin = EdgeInsetsDirectional.only(
@@ -33,11 +29,13 @@ class Constants {
     top: 4,
   );
 
-  ///Space
-  static const double badgeSpaceFromEnd = 12.0;
-
-  /// BorderRadius
-  static const BorderRadius radius_4 = BorderRadius.all(
-    Radius.circular(4),
+  /// Position
+  static final badgePosition = BadgePosition.custom(
+    end: 12.0,
+    bottom: 0.0,
+    top: 0.0,
   );
+
+  /// Style
+  static const badgeStyle = BadgeStyle(badgeColor: selectedColor);
 }

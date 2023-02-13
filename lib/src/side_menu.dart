@@ -31,7 +31,7 @@ class SideMenu extends StatefulWidget {
     this.hasResizerToggle = true,
     this.resizerData,
     this.resizerToggleData,
-    this.backgroundColor = Constants.backgroundColor,
+    this.backgroundColor,
   })  : assert(minWidth >= 0.0),
         assert(maxWidth > 0.0),
         assert(priority == SideMenuPriority.sizer ? hasResizer : true),
@@ -125,7 +125,7 @@ class SideMenu extends StatefulWidget {
 
   /// The [backgroundColor] it's used to determine the side menu background
   /// color.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   @override
   State<SideMenu> createState() => _SideMenuState();
@@ -219,7 +219,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
     return AnimatedContainer(
       duration: Constants.duration,
       width: _currentWidth,
-      color: widget.backgroundColor,
+      color: widget.backgroundColor ?? Theme.of(context).colorScheme.surface,
       constraints: BoxConstraints(
         minHeight: size.height,
         maxHeight: size.height,

@@ -1,3 +1,7 @@
+## 0.2.1
+* Bug fix: #3
+* Breaking changes: remove badgeColor instead use BadgeStyle
+
 ## 0.2.0
 * Add optional hover color style property
 * Add more left side menu items to example

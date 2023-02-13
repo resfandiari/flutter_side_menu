@@ -40,6 +40,13 @@ class _MyAppState extends State<MyApp> {
                       hoverColor: Colors.blue,
                       titleStyle: const TextStyle(color: Colors.white),
                       icon: const Icon(Icons.home),
+                      badgeContent: const Text(
+                        '23',
+                        style: TextStyle(
+                          fontSize: 8,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                     SideMenuItemDataTile(
                       isSelected: true,
