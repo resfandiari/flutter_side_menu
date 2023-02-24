@@ -1,3 +1,7 @@
+## 0.3.0
+* Add Material hover effect 
+* Set Theme colors as defaults
+
 ## 0.2.1
 * Bug fix: #3
 * Breaking changes: remove badgeColor instead use BadgeStyle
