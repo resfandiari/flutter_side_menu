@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _controller = SideMenuController();
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +36,8 @@ class _MyAppState extends State<MyApp> {
                   header: const Text('Header'),
                   items: [
                     SideMenuItemDataTile(
-                      isSelected: false,
-                      onTap: () {},
+                      isSelected: _currentIndex == 0,
+                      onTap: () => setState(() => _currentIndex = 0),
                       title: 'Item 1',
                       hoverColor: Colors.blue,
                       titleStyle: const TextStyle(color: Colors.white),
@@ -51,8 +52,8 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                     SideMenuItemDataTile(
-                      isSelected: true,
-                      onTap: () {},
+                      isSelected: _currentIndex == 1,
+                      onTap: () => setState(() => _currentIndex = 1),
                       title: 'Item 2',
                       selectedTitleStyle:
                           const TextStyle(fontWeight: FontWeight.bold),
@@ -60,15 +61,15 @@ class _MyAppState extends State<MyApp> {
                       selectedIcon: const Icon(Icons.abc),
                     ),
                     SideMenuItemDataTile(
-                      isSelected: false,
-                      onTap: () {},
+                      isSelected: _currentIndex == 2,
+                      onTap: () => setState(() => _currentIndex = 2),
                       title: 'Item 3',
                       icon: const Icon(Icons.play_arrow),
                       // selectedIcon: const Icon(Icons.abc),
                     ),
                     SideMenuItemDataTile(
-                      isSelected: false,
-                      onTap: () {},
+                      isSelected: _currentIndex == 3,
+                      onTap: () => setState(() => _currentIndex = 3),
                       title: 'Item 4',
                       icon: const Icon(Icons.car_crash),
                       // selectedIcon: const Icon(Icons.abc),
