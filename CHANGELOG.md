@@ -1,3 +1,6 @@
+## 0.3.1
+* Add optional selected icon and selected text style property
+
 ## 0.3.0
 * Add Material hover effect 
 * Set Theme colors as defaults
