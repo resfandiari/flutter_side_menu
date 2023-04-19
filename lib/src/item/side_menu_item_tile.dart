@@ -28,7 +28,8 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
       decoration: ShapeDecoration(
         shape: shape(context),
         color: widget.data.isSelected
-            ? widget.data.highlightSelectedColor ?? Theme.of(context).colorScheme.secondaryContainer
+            ? widget.data.highlightSelectedColor ??
+                Theme.of(context).colorScheme.secondaryContainer
             : null,
       ),
       child: Material(
@@ -54,8 +55,16 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
 
   Color getSelectedColor() {
     return widget.data.isSelected
-        ? widget.data.selectedColor ?? Theme.of(context).colorScheme.onSecondaryContainer
-        : widget.data.unSelectedColor ?? Theme.of(context).colorScheme.onSurfaceVariant;
+        ? widget.data.selectedColor ??
+            Theme.of(context).colorScheme.onSecondaryContainer
+        : widget.data.unSelectedColor ??
+            Theme.of(context).colorScheme.onSurfaceVariant;
+  }
+
+  Widget? getSelectedIcon() {
+    return widget.data.isSelected && widget.data.selectedIcon != null
+        ? widget.data.selectedIcon
+        : widget.data.icon;
   }
 
   Widget _createView({
@@ -69,7 +78,9 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
       ),
     );
 
-    return widget.data.isSelected && widget.data.hasSelectedLine ? _hasSelectedLine(child: content) : content;
+    return widget.data.isSelected && widget.data.hasSelectedLine
+        ? _hasSelectedLine(child: content)
+        : content;
   }
 
   Widget _hasTooltip({
@@ -133,8 +144,11 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
             width: widget.minWidth - widget.data.margin.horizontal,
             height: double.maxFinite,
             child: IconTheme(
-              data: Theme.of(context).iconTheme.copyWith(color: getSelectedColor()),
-              child: widget.data.icon!,
+              data: Theme.of(context)
+                  .iconTheme
+                  .copyWith(color: getSelectedColor()),
+              // child: widget.data.icon!,
+              child: getSelectedIcon()!,
             ),
           )
         : const SizedBox.shrink();
@@ -143,10 +157,15 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
   Widget _title({
     required BuildContext context,
   }) {
-    final TextStyle? titleStyle = widget.data.titleStyle ?? Theme.of(context).textTheme.bodyLarge;
+    final TextStyle? titleStyle =
+        widget.data.titleStyle ?? Theme.of(context).textTheme.bodyLarge;
+    final TextStyle? selectedTitleStyle =
+        widget.data.selectedTitleStyle ?? Theme.of(context).textTheme.bodyLarge;
     return AutoSizeText(
       widget.data.title!,
-      style: titleStyle?.copyWith(color: getSelectedColor()),
+      style: widget.data.isSelected
+          ? selectedTitleStyle?.copyWith(color: getSelectedColor())
+          : titleStyle?.copyWith(color: getSelectedColor()),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
