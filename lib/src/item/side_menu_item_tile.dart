@@ -147,7 +147,6 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
               data: Theme.of(context)
                   .iconTheme
                   .copyWith(color: getSelectedColor()),
-              // child: widget.data.icon!,
               child: getSelectedIcon()!,
             ),
           )
