@@ -13,6 +13,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.icon,
     this.title,
     this.titleStyle,
+    this.selectedTitleStyle,
     this.tooltip,
     this.badgeContent,
     this.hasSelectedLine = true,
@@ -24,6 +25,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.margin = Constants.itemMargin,
     this.borderRadius,
     this.selectedColor,
+    this.selectedIcon,
     this.unSelectedColor,
     this.highlightSelectedColor,
     this.hoverColor,
@@ -38,11 +40,13 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final Size selectedLineSize;
   final String? title;
   final TextStyle? titleStyle;
+  final TextStyle? selectedTitleStyle;
   final String? tooltip;
   final Widget? badgeContent;
   final BadgePosition? badgePosition;
   final BadgeStyle? badgeStyle;
   final Widget? icon;
+  final Widget? selectedIcon;
   final double itemHeight;
   final EdgeInsetsDirectional margin;
   final BorderRadiusGeometry? borderRadius;
@@ -56,11 +60,13 @@ class SideMenuItemDataTitle extends SideMenuItemData {
   const SideMenuItemDataTitle({
     required this.title,
     this.titleStyle,
+    this.selectedTitleStyle,
     this.padding = Constants.itemMargin,
   }) : super();
 
   final String title;
   final TextStyle? titleStyle;
+  final TextStyle? selectedTitleStyle;
   final EdgeInsetsDirectional padding;
 }
 

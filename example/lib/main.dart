@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
             SideMenu(
               controller: _controller,
               backgroundColor: Colors.blueGrey,
+              mode: SideMenuMode.open,
               builder: (data) {
                 return SideMenuData(
                   header: const Text('Header'),
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
                       hoverColor: Colors.blue,
                       titleStyle: const TextStyle(color: Colors.white),
                       icon: const Icon(Icons.home),
+                      // selectedIcon: const Icon(Icons.abc),
                       badgeContent: const Text(
                         '23',
                         style: TextStyle(
@@ -52,19 +54,24 @@ class _MyAppState extends State<MyApp> {
                       isSelected: true,
                       onTap: () {},
                       title: 'Item 2',
+                      selectedTitleStyle:
+                          const TextStyle(fontWeight: FontWeight.bold),
                       icon: const Icon(Icons.table_bar),
+                      selectedIcon: const Icon(Icons.abc),
                     ),
                     SideMenuItemDataTile(
                       isSelected: false,
                       onTap: () {},
                       title: 'Item 3',
                       icon: const Icon(Icons.play_arrow),
+                      // selectedIcon: const Icon(Icons.abc),
                     ),
                     SideMenuItemDataTile(
                       isSelected: false,
                       onTap: () {},
                       title: 'Item 4',
                       icon: const Icon(Icons.car_crash),
+                      // selectedIcon: const Icon(Icons.abc),
                     ),
                   ],
                   footer: const Text('Footer'),
