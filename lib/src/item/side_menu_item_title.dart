@@ -26,6 +26,7 @@ class SideMenuItemTitle extends StatelessWidget {
       data.title,
       style: titleStyle,
       maxLines: 1,
+      textAlign: data.textAlign,
       overflow: TextOverflow.ellipsis,
     );
   }

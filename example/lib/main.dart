@@ -59,6 +59,10 @@ class _MyAppState extends State<MyApp> {
                       icon: const Icon(Icons.table_bar_outlined),
                       selectedIcon: const Icon(Icons.table_bar),
                     ),
+                    const SideMenuItemDataTitle(
+                      title: 'Account',
+                      textAlign: TextAlign.center,
+                    ),
                     SideMenuItemDataTile(
                       isSelected: false,
                       onTap: () {},

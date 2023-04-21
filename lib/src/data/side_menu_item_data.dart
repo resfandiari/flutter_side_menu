@@ -60,11 +60,13 @@ class SideMenuItemDataTitle extends SideMenuItemData {
   const SideMenuItemDataTitle({
     required this.title,
     this.titleStyle,
+    this.textAlign,
     this.padding = Constants.itemMargin,
   }) : super();
 
   final String title;
   final TextStyle? titleStyle;
+  final TextAlign? textAlign;
   final EdgeInsetsDirectional padding;
 }
 
