@@ -40,8 +40,8 @@ class _MyAppState extends State<MyApp> {
                       title: 'Item 1',
                       hoverColor: Colors.blue,
                       titleStyle: const TextStyle(color: Colors.white),
-                      icon: const Icon(Icons.home),
-                      // selectedIcon: const Icon(Icons.abc),
+                      icon: const Icon(Icons.home_outlined),
+                      selectedIcon: const Icon(Icons.home),
                       badgeContent: const Text(
                         '23',
                         style: TextStyle(
@@ -56,22 +56,20 @@ class _MyAppState extends State<MyApp> {
                       title: 'Item 2',
                       selectedTitleStyle:
                           const TextStyle(fontWeight: FontWeight.bold),
-                      icon: const Icon(Icons.table_bar),
-                      selectedIcon: const Icon(Icons.abc),
+                      icon: const Icon(Icons.table_bar_outlined),
+                      selectedIcon: const Icon(Icons.table_bar),
                     ),
                     SideMenuItemDataTile(
                       isSelected: false,
                       onTap: () {},
                       title: 'Item 3',
                       icon: const Icon(Icons.play_arrow),
-                      // selectedIcon: const Icon(Icons.abc),
                     ),
                     SideMenuItemDataTile(
                       isSelected: false,
                       onTap: () {},
                       title: 'Item 4',
                       icon: const Icon(Icons.car_crash),
-                      // selectedIcon: const Icon(Icons.abc),
                     ),
                   ],
                   footer: const Text('Footer'),
