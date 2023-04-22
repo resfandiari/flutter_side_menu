@@ -1,3 +1,6 @@
+## 0.3.2
+* Add support to align SideMenuItemDataTitle
+
 ## 0.3.1
 * Add optional selected icon and selected text style property
 
