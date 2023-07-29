@@ -35,6 +35,9 @@ class _MyAppState extends State<MyApp> {
                 return SideMenuData(
                   header: const Text('Header'),
                   items: [
+                    const SideMenuItemDataTitle(
+                      title: 'Section Header'
+                    ),
                     SideMenuItemDataTile(
                       isSelected: _currentIndex == 0,
                       onTap: () => setState(() => _currentIndex = 0),
@@ -56,9 +59,10 @@ class _MyAppState extends State<MyApp> {
                       onTap: () => setState(() => _currentIndex = 1),
                       title: 'Item 2',
                       selectedTitleStyle:
-                          const TextStyle(fontWeight: FontWeight.bold),
+                          const TextStyle(fontWeight: FontWeight.w700,color: Colors.yellow),
                       icon: const Icon(Icons.table_bar_outlined),
                       selectedIcon: const Icon(Icons.table_bar),
+                      titleStyle: const TextStyle(color: Colors.deepPurpleAccent),
                     ),
                     const SideMenuItemDataTitle(
                       title: 'Account',

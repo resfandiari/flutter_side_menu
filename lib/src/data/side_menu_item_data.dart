@@ -24,9 +24,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.itemHeight = Constants.itemHeight,
     this.margin = Constants.itemMargin,
     this.borderRadius,
-    this.selectedColor,
     this.selectedIcon,
-    this.unSelectedColor,
     this.highlightSelectedColor,
     this.hoverColor,
     this.badgePosition,
@@ -51,9 +49,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final EdgeInsetsDirectional margin;
   final BorderRadiusGeometry? borderRadius;
   final Color? hoverColor,
-      highlightSelectedColor,
-      selectedColor,
-      unSelectedColor;
+      highlightSelectedColor;
 }
 
 class SideMenuItemDataTitle extends SideMenuItemData {
