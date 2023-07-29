@@ -1,3 +1,9 @@
+## 0.4.0
+* **Breaking changes** related to Bug [#8](https://github.com/resfandiari/flutter_side_menu/issues/8): 
+  * remove `selectedColor` from `SideMenuItemDataTile` instead use `selectedTitleStyle`
+  * remove `unSelectedColor` from `SideMenuItemDataTile` instead use `titleStyle`
+* Updated minimum dependencies to Dart >=3.0.0 and Flutter >= 3.10.0.
+
 ## 0.3.2
 * Add support to align SideMenuItemDataTitle
 

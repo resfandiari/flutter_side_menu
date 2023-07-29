@@ -103,8 +103,7 @@ class AppScaffold extends StatelessWidget {
   }
 
   static int _calculateSelectedIndex(BuildContext context) {
-    final GoRouter route = GoRouter.of(context);
-    final String location = route.location;
+    final String location = GoRouterState.of(context).uri.toString();
     if (location.startsWith('/home')) {
       return 0;
     }
