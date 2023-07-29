@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/flutter_side_menu.dart';
 
-class NavigationSide extends StatelessWidget {
-  const NavigationSide({Key? key}) : super(key: key);
+class FilterSide extends StatelessWidget {
+  const FilterSide({Key? key}) : super(key: key);
 
   final _navItems = const [
     NavItemModel(name: 'Item 1', icon: Icons.home),
@@ -28,28 +28,64 @@ class NavigationSide extends StatelessWidget {
         child: Scaffold(
           body: Row(
             children: [
-              SideMenu(
-                mode: SideMenuMode.open,
+              Expanded(
+                child: Container(
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'body',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ),
+              ),
+              VerticalDivider(
+                width: 1,
+                thickness: 1,
+                color: Colors.grey.shade300,
+              ),
+              SideMenu(mode: SideMenuMode.open,
+                 position: SideMenuPosition.right,
+                hasResizer: false,
+                hasResizerToggle: false,
+
                 builder: (data) {
                   return SideMenuData(
                     header: Column(
                       children: [
                         ListTile(
-                          leading: const Icon(Icons.paypal),
-                          title: const Text('PayPal').showOrNull(data.isOpen),
-                          trailing:
-                              const Icon(Icons.search).showOrNull(data.isOpen),
+                          title: const Text('View Option',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
                         ),
-                        if (data.isOpen)
-                          const TabBar(
-                            labelColor: Colors.black,
-                            tabs: [
-                              Tab(text: 'Tab 1'),
-                              Tab(text: 'Tab 2'),
-                            ],
-                          )
-                        else
-                          Switch(value: false, onChanged: (vlaue) {})
+                        Container(
+                          margin: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            border: Border.all(
+                              color: Colors.grey.shade300,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                            title: const Text('Default View'),
+                          ),
+                        ),
+                       ListTile(
+                         leading: const Icon(Icons.filter_alt_outlined),
+                          title: const Text('Filter'),
+                         trailing: const Icon(Icons.arrow_forward_ios),
+                       ),
+                        ListTile(
+                          leading: const Icon(Icons.sort),
+                          title: const Text('Sort'),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.access_alarm),
+                          title: const Text('Alarm'),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                        ),
+                        Divider()
                       ],
                     ),
                     items: [
@@ -96,16 +132,6 @@ class NavigationSide extends StatelessWidget {
                     ),
                   );
                 },
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.white,
-                  alignment: Alignment.center,
-                  child: Text(
-                    'body',
-                    style: Theme.of(context).textTheme.displaySmall,
-                  ),
-                ),
               ),
             ],
           ),

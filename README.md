@@ -22,7 +22,8 @@
   <tr>
     <td><a href="https://github.com/resfandiari/flutter_side_menu/tree/main/example/lib/navigation_side.dart">
 Navigation Side    </a></td>
-     <td>Filter Side</td>
+     <td><a href="https://github.com/resfandiari/flutter_side_menu/tree/main/example/lib/filter_side.dart">
+Filter Side    </a></td>
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/resfandiari/flutter_side_menu/main/assets/side_menu.png" ></td>
