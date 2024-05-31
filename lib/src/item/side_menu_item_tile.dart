@@ -1,16 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
 
 class SideMenuItemTile extends StatefulWidget {
   const SideMenuItemTile({
-    Key? key,
+    super.key,
     required this.isOpen,
     required this.minWidth,
     required this.data,
-  }) : super(key: key);
+  });
   final SideMenuItemDataTile data;
   final bool isOpen;
   final double minWidth;
@@ -25,17 +24,18 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     return Container(
       height: widget.data.itemHeight,
       margin: widget.data.margin,
-      decoration: ShapeDecoration(
-        shape: shape(context),
-        color: widget.data.isSelected
-            ? widget.data.highlightSelectedColor ??
-                Theme.of(context).colorScheme.secondaryContainer
-            : null,
-      ),
+      decoration: widget.data.decoration ??
+          ShapeDecoration(
+            shape: shape(context),
+            color: widget.data.isSelected
+                ? widget.data.highlightSelectedColor ??
+                    Theme.of(context).colorScheme.secondaryContainer
+                : null,
+          ),
       child: Material(
         color: Colors.transparent,
-        clipBehavior: Clip.hardEdge,
-        shape: shape(context),
+        clipBehavior: widget.data.clipBehavior,
+        shape: widget.data.shape ?? shape(context),
         child: InkWell(
           onTap: widget.data.onTap,
           hoverColor: widget.data.hoverColor,
@@ -55,8 +55,10 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
 
   Color getSelectedColor() {
     return widget.data.isSelected
-        ? widget.data.selectedTitleStyle?.color  ?? Theme.of(context).colorScheme.onSecondaryContainer
-        : widget.data.titleStyle?.color ?? Theme.of(context).colorScheme.onSurfaceVariant;
+        ? widget.data.selectedTitleStyle?.color ??
+            Theme.of(context).colorScheme.onSecondaryContainer
+        : widget.data.titleStyle?.color ??
+            Theme.of(context).colorScheme.onSurfaceVariant;
   }
 
   Widget? getSelectedIcon() {
@@ -96,13 +98,10 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
   Widget _hasBadge({
     required Widget child,
   }) {
-    if (widget.data.badgeContent != null) {
-      return badges.Badge(
-        badgeContent: Center(child: widget.data.badgeContent!),
-        badgeStyle: widget.data.badgeStyle ?? Constants.badgeStyle,
-        position: widget.data.badgePosition ?? Constants.badgePosition,
-        child: child,
-      );
+    if (widget.data.badgeBuilder != null) {
+      if (widget.data.badgeBuilder!(child) != null) {
+        return widget.data.badgeBuilder!(child)!;
+      }
     }
     return child;
   }

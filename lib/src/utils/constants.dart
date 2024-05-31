@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -28,14 +27,4 @@ class Constants {
     end: 4,
     top: 4,
   );
-
-  /// Position
-  static final badgePosition = BadgePosition.custom(
-    end: 12.0,
-    bottom: 0.0,
-    top: 0.0,
-  );
-
-  /// Style
-  static const badgeStyle = BadgeStyle(badgeColor: selectedColor);
 }

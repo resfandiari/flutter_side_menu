@@ -4,9 +4,9 @@ import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 
 class SideMenuItemTitle extends StatelessWidget {
   const SideMenuItemTitle({
-    Key? key,
+    super.key,
     required this.data,
-  }) : super(key: key);
+  });
   final SideMenuItemDataTitle data;
 
   @override

@@ -19,7 +19,7 @@ typedef SideMenuBuilder = SideMenuData Function(SideMenuBuilderData data);
 
 class SideMenu extends StatefulWidget {
   const SideMenu({
-    Key? key,
+    super.key,
     required this.builder,
     this.controller,
     this.mode = SideMenuMode.auto,
@@ -36,8 +36,7 @@ class SideMenu extends StatefulWidget {
         assert(maxWidth > 0.0),
         assert(priority == SideMenuPriority.sizer ? hasResizer : true),
         assert(resizerData != null ? hasResizer : true),
-        assert(resizerToggleData != null ? hasResizerToggle : true),
-        super(key: key);
+        assert(resizerToggleData != null ? hasResizerToggle : true);
 
   /// The [builder] function which will be invoked on each widget build.
   /// The [builder] takes the `SideMenuBuilderData` and must return
@@ -140,8 +139,13 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
       widget.controller?.open = _openMenu;
       widget.controller?.close = _closeMenu;
       widget.controller?.toggle = _toggleMenu;
+      widget.controller?.isCollapsed = _isCollapsed;
     }
     super.initState();
+  }
+
+  bool _isCollapsed() {
+    return _currentWidth == widget.minWidth;
   }
 
   void _openMenu() {
@@ -189,7 +193,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
       maxWidth: widget.maxWidth,
       currentWidth: _currentWidth,
       mode: widget.mode,
-      deviceWidth: MediaQuery.of(context).size.width,
+      deviceWidth: MediaQuery.sizeOf(context).width,
     );
   }
 
@@ -197,7 +201,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
   Widget build(BuildContext context) => _createView();
 
   Widget _createView() {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.sizeOf(context);
     final content = _content(size);
 
     if (widget.hasResizer || widget.hasResizerToggle) {
@@ -251,7 +255,7 @@ class _SideMenuState extends State<SideMenu> with SideMenuWidthMixin {
         if (widget.position == SideMenuPosition.left) {
           x = details.globalPosition.dx;
         } else {
-          x = MediaQuery.of(context).size.width - details.globalPosition.dx;
+          x = MediaQuery.sizeOf(context).width - details.globalPosition.dx;
         }
         if (x >= widget.minWidth && x <= widget.maxWidth) {
           setState(() {

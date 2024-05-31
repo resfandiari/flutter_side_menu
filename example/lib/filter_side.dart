@@ -1,5 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/flutter_side_menu.dart';
+import 'package:badges/badges.dart' as badges;
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Filter Side',
+      home: FilterSide(),
+    );
+  }
+}
 
 class FilterSide extends StatelessWidget {
   const FilterSide({Key? key}) : super(key: key);
@@ -43,11 +60,11 @@ class FilterSide extends StatelessWidget {
                 thickness: 1,
                 color: Colors.grey.shade300,
               ),
-              SideMenu(mode: SideMenuMode.open,
-                 position: SideMenuPosition.right,
+              SideMenu(
+                mode: SideMenuMode.open,
+                position: SideMenuPosition.right,
                 hasResizer: false,
                 hasResizerToggle: false,
-
                 builder: (data) {
                   return SideMenuData(
                     header: Column(
@@ -70,11 +87,11 @@ class FilterSide extends StatelessWidget {
                             title: const Text('Default View'),
                           ),
                         ),
-                       ListTile(
-                         leading: const Icon(Icons.filter_alt_outlined),
+                        ListTile(
+                          leading: const Icon(Icons.filter_alt_outlined),
                           title: const Text('Filter'),
-                         trailing: const Icon(Icons.arrow_forward_ios),
-                       ),
+                          trailing: const Icon(Icons.arrow_forward_ios),
+                        ),
                         ListTile(
                           leading: const Icon(Icons.sort),
                           title: const Text('Sort'),
@@ -114,12 +131,22 @@ class FilterSide extends StatelessWidget {
                                 e.icon,
                                 color: const Color(0xff8e8e8e),
                               ),
-                              badgeContent: const Text(
-                                '23',
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  color: Colors.white,
+                              badgeBuilder: (tile) => badges.Badge(
+                                badgeContent: const Center(
+                                  child: Text(
+                                    '23',
+                                    style: TextStyle(
+                                      fontSize: 8,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
+                                position: badges.BadgePosition.custom(
+                                  end: 12.0,
+                                  bottom: 0.0,
+                                  top: 0.0,
+                                ),
+                                child: tile,
                               ).showOrNull(data.isOpen),
                             ),
                           )

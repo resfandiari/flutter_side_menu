@@ -3,9 +3,9 @@ import 'package:flutter_side_menu/src/data/side_menu_item_data.dart';
 
 class SideMenuItemDivider extends StatelessWidget {
   const SideMenuItemDivider({
-    Key? key,
+    super.key,
     required this.data,
-  }) : super(key: key);
+  });
   final SideMenuItemDataDivider data;
 
   @override

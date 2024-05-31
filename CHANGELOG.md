@@ -1,3 +1,23 @@
+## 0.5.0
+* Updated minimum dependencies to Dart >=3.4.0 and Flutter >= 3.21.1.
+* **Breaking changes** Remove badge package and add `badgeBuilder` to `SideMenuItemDataTile` property now you can use any badge package you want.
+``` dart
+ badgeBuilder: (tile) =>badges.Badge(
+  badgeContent: Center(child: Text('1')),
+  ///  Do not forgot to add tile as child
+  child: tile) 
+```
+  * remove `badgeContent`, `badgePosition`, `badgeStyle` from `SideMenuItemDataTile` instead use `badgeBuilder`.
+* Add `isCollapsed` to `SideMenuController`
+* Add `decoration` to `SideMenuItemDataTile` to full access on Tile decoration. 
+* Add `shape` to `SideMenuItemDataTile` to full access on Tile Material shape. 
+* Add `clipBehavior` to `SideMenuItemDataTile`.
+* Add `customChildFlex` to `SideMenuData`.
+* Add `spacerAfterCustomChild` to `SideMenuData`.
+* Add `spacerAfterItems` to `SideMenuData`.
+* Add `animHeader`, `animCustomChild`, `animItems`, `animFooter` to `SideMenuData` now you can add simple scale animation to any part of Menu.
+* Use `MediaQuery.sizeOf` to avoiding unnecessary rebuilds
+
 ## 0.4.0
 * **Breaking changes** related to Bug [#8](https://github.com/resfandiari/flutter_side_menu/issues/8): 
   * remove `selectedColor` from `SideMenuItemDataTile` instead use `selectedTitleStyle`

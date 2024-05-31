@@ -10,4 +10,3 @@ export './src/data/side_menu_data.dart';
 export './src/data/side_menu_item_data.dart';
 export './src/data/resizer_toggle_data.dart';
 export './src/data/resizer_data.dart';
-export 'package:badges/badges.dart';

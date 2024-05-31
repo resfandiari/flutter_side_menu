@@ -1,6 +1,10 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/src/utils/constants.dart';
+
+/// Signature for the `builder` function provide which provide solution to
+/// use as badge child
+/// is responsible for returning a widget which is to be rendered.
+typedef SideMenuItemBadgeBuilder = Widget? Function(Widget tile);
 
 abstract class SideMenuItemData {
   const SideMenuItemData();
@@ -15,7 +19,6 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.titleStyle,
     this.selectedTitleStyle,
     this.tooltip,
-    this.badgeContent,
     this.hasSelectedLine = true,
     this.selectedLineSize = const Size(
       Constants.itemSelectedLineWidth,
@@ -27,10 +30,18 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.selectedIcon,
     this.highlightSelectedColor,
     this.hoverColor,
-    this.badgePosition,
-    this.badgeStyle,
+    this.badgeBuilder,
+    this.decoration,
+    this.shape,
+    this.clipBehavior = Clip.hardEdge,
   })  : assert(itemHeight >= 0.0),
         assert(icon != null || title != null),
+        assert((highlightSelectedColor == null && decoration == null) ||
+            (highlightSelectedColor != null
+                ? decoration == null
+                : decoration != null
+                    ? highlightSelectedColor == null
+                    : true)),
         super();
 
   final bool isSelected, hasSelectedLine;
@@ -40,16 +51,16 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final TextStyle? titleStyle;
   final TextStyle? selectedTitleStyle;
   final String? tooltip;
-  final Widget? badgeContent;
-  final BadgePosition? badgePosition;
-  final BadgeStyle? badgeStyle;
+  final SideMenuItemBadgeBuilder? badgeBuilder;
   final Widget? icon;
   final Widget? selectedIcon;
   final double itemHeight;
   final EdgeInsetsDirectional margin;
   final BorderRadiusGeometry? borderRadius;
-  final Color? hoverColor,
-      highlightSelectedColor;
+  final Color? hoverColor, highlightSelectedColor;
+  final Decoration? decoration;
+  final ShapeBorder? shape;
+  final Clip clipBehavior;
 }
 
 class SideMenuItemDataTitle extends SideMenuItemData {

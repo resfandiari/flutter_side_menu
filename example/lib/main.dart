@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_side_menu/flutter_side_menu.dart';
+import 'package:badges/badges.dart' as badges;
 
 void main() {
   runApp(const MyApp());
@@ -33,11 +34,10 @@ class _MyAppState extends State<MyApp> {
               mode: SideMenuMode.open,
               builder: (data) {
                 return SideMenuData(
+                  animItems: SideMenuItemsAnimationData(),
                   header: const Text('Header'),
                   items: [
-                    const SideMenuItemDataTitle(
-                      title: 'Section Header'
-                    ),
+                    const SideMenuItemDataTitle(title: 'Section Header'),
                     SideMenuItemDataTile(
                       isSelected: _currentIndex == 0,
                       onTap: () => setState(() => _currentIndex = 0),
@@ -46,23 +46,68 @@ class _MyAppState extends State<MyApp> {
                       titleStyle: const TextStyle(color: Colors.white),
                       icon: const Icon(Icons.home_outlined),
                       selectedIcon: const Icon(Icons.home),
-                      badgeContent: const Text(
-                        '23',
-                        style: TextStyle(
-                          fontSize: 8,
-                          color: Colors.white,
+                      badgeBuilder: (tile) => badges.Badge(
+                        badgeContent: const Center(
+                          child: Text(
+                            '23',
+                            style: TextStyle(
+                              fontSize: 8,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
+                        position: badges.BadgePosition.custom(
+                          end: 12.0,
+                          bottom: 0.0,
+                          top: 0.0,
+                        ),
+                        child: tile,
                       ),
+                    ),
+                    SideMenuItemDataTile(
+                      decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.yellow,
+                              Colors.red,
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(2),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.yellow,
+                              spreadRadius: 1,
+                              blurRadius: 4,
+                              offset: Offset(0, 1),
+                            )
+                          ]),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                        Radius.circular(2),
+                      )),
+                      // hasSelectedLine: false,
+                      isSelected: _currentIndex == 0,
+                      onTap: () => setState(() => _currentIndex = 0),
+                      title: 'Item 1',
+                      hoverColor: Colors.blue,
+                      titleStyle: const TextStyle(color: Colors.white),
+                      icon: const Icon(Icons.home_outlined),
+                      selectedIcon: const Icon(Icons.home),
                     ),
                     SideMenuItemDataTile(
                       isSelected: _currentIndex == 1,
                       onTap: () => setState(() => _currentIndex = 1),
                       title: 'Item 2',
-                      selectedTitleStyle:
-                          const TextStyle(fontWeight: FontWeight.w700,color: Colors.yellow),
+                      selectedTitleStyle: const TextStyle(
+                          fontWeight: FontWeight.w700, color: Colors.yellow),
                       icon: const Icon(Icons.table_bar_outlined),
                       selectedIcon: const Icon(Icons.table_bar),
-                      titleStyle: const TextStyle(color: Colors.deepPurpleAccent),
+                      titleStyle:
+                          const TextStyle(color: Colors.deepPurpleAccent),
                     ),
                     const SideMenuItemDataTitle(
                       title: 'Account',
