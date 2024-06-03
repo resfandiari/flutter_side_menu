@@ -61,6 +61,53 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final Decoration? decoration;
   final ShapeBorder? shape;
   final Clip clipBehavior;
+
+  SideMenuItemDataTile resolveWith({
+    final SideMenuItemTileDefaults? g,
+  }) {
+    return SideMenuItemDataTile(
+      titleStyle: titleStyle ?? g?.titleStyle,
+      selectedTitleStyle: selectedTitleStyle ?? g?.selectedTitleStyle,
+      borderRadius: borderRadius ?? g?.borderRadius,
+      highlightSelectedColor:
+          highlightSelectedColor ?? g?.highlightSelectedColor,
+      hoverColor: hoverColor ?? g?.hoverColor,
+      decoration: decoration ?? g?.decoration,
+      shape: shape ?? g?.shape,
+      hasSelectedLine: hasSelectedLine,
+      selectedLineSize: selectedLineSize,
+      itemHeight: itemHeight,
+      margin: margin,
+      clipBehavior: clipBehavior,
+      isSelected: isSelected,
+      onTap: onTap,
+      icon: icon,
+      title: title,
+      badgeBuilder: badgeBuilder,
+      selectedIcon: selectedIcon,
+      tooltip: tooltip,
+    );
+  }
+}
+
+class SideMenuItemTileDefaults {
+  const SideMenuItemTileDefaults({
+    this.titleStyle,
+    this.selectedTitleStyle,
+    this.borderRadius,
+    this.highlightSelectedColor,
+    this.hoverColor,
+    this.decoration,
+    this.shape,
+  });
+
+  final TextStyle? titleStyle;
+  final TextStyle? selectedTitleStyle;
+  final BorderRadiusGeometry? borderRadius;
+  final Color? highlightSelectedColor;
+  final Color? hoverColor;
+  final Decoration? decoration;
+  final ShapeBorder? shape;
 }
 
 class SideMenuItemDataTitle extends SideMenuItemData {

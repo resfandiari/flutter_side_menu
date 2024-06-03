@@ -1,3 +1,6 @@
+## 0.5.2
+* Add `SideMenuItemTileDefaults` to `SideMenuData` to define default settings for Tiles
+
 ## 0.5.1
 * Replace Widget with Divider in `SideMenuItemDataDivider` to have custom divider.
 

@@ -14,6 +14,7 @@ class SideMenuData {
     this.customChildFlex = 1,
     this.spacerAfterCustomChild,
     this.spacerAfterItems,
+    this.defaultTileData,
   }) : assert(customChild != null || items != null);
 
   final Widget? customChild, header, footer;
@@ -25,6 +26,7 @@ class SideMenuData {
   final int customChildFlex;
   final Spacer? spacerAfterCustomChild;
   final Spacer? spacerAfterItems;
+  final SideMenuItemTileDefaults? defaultTileData;
 }
 
 class SideMenuItemsAnimationData {

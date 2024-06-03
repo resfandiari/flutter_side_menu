@@ -34,6 +34,29 @@ class _MyAppState extends State<MyApp> {
               mode: SideMenuMode.open,
               builder: (data) {
                 return SideMenuData(
+                  defaultTileData: SideMenuItemTileDefaults(
+                    // decoration: const BoxDecoration(
+                    //     gradient: LinearGradient(
+                    //       colors: [
+                    //         Colors.yellow,
+                    //         Colors.red,
+                    //       ],
+                    //       begin: Alignment.centerLeft,
+                    //       end: Alignment.centerRight,
+                    //     ),
+                    //     borderRadius: BorderRadius.all(
+                    //       Radius.circular(2),
+                    //     ),
+                    //     boxShadow: [
+                    //       BoxShadow(
+                    //         color: Colors.yellow,
+                    //         spreadRadius: 1,
+                    //         blurRadius: 4,
+                    //         offset: Offset(0, 1),
+                    //       )
+                    //     ]),
+                    hoverColor: Colors.black,
+                  ),
                   animItems: SideMenuItemsAnimationData(),
                   header: const Text('Header'),
                   items: [

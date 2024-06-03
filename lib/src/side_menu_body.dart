@@ -77,7 +77,7 @@ class SideMenuBody extends StatelessWidget {
       (SideMenuItemDataTile _) => SideMenuItemTile(
           minWidth: minWidth,
           isOpen: isOpen,
-          data: item,
+          data: item.resolveWith(g: data.defaultTileData),
         ),
       (SideMenuItemDataTitle _) => SideMenuItemTitle(
           data: item,
