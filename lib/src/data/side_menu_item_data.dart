@@ -83,6 +83,6 @@ class SideMenuItemDataDivider extends SideMenuItemData {
     this.padding = Constants.itemMargin,
   }) : super();
 
-  final Divider divider;
+  final Widget divider;
   final EdgeInsetsDirectional padding;
 }

@@ -1,3 +1,6 @@
+## 0.5.1
+* Replace Widget with Divider in `SideMenuItemDataDivider` to have custom divider.
+
 ## 0.5.0
 * Updated minimum dependencies to Dart >=3.4.0 and Flutter >= 3.21.1.
 * **Breaking changes** Remove badge package and add `badgeBuilder` to `SideMenuItemDataTile` property now you can use any badge package you want.
