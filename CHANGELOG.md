@@ -1,3 +1,6 @@
+## 0.5.3
+* Add `selectedDecoration` to `SideMenuItemTileDefaults`
+
 ## 0.5.2
 * Add `SideMenuItemTileDefaults` to `SideMenuData` to define default settings for Tiles
 

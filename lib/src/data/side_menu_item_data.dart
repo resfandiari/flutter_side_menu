@@ -72,7 +72,8 @@ class SideMenuItemDataTile extends SideMenuItemData {
       highlightSelectedColor:
           highlightSelectedColor ?? g?.highlightSelectedColor,
       hoverColor: hoverColor ?? g?.hoverColor,
-      decoration: decoration ?? g?.decoration,
+      decoration:
+          decoration ?? (isSelected ? g?.selectedDecoration : g?.decoration),
       shape: shape ?? g?.shape,
       hasSelectedLine: hasSelectedLine,
       selectedLineSize: selectedLineSize,
@@ -98,6 +99,7 @@ class SideMenuItemTileDefaults {
     this.highlightSelectedColor,
     this.hoverColor,
     this.decoration,
+    this.selectedDecoration,
     this.shape,
   });
 
@@ -107,6 +109,7 @@ class SideMenuItemTileDefaults {
   final Color? highlightSelectedColor;
   final Color? hoverColor;
   final Decoration? decoration;
+  final Decoration? selectedDecoration;
   final ShapeBorder? shape;
 }
 
