@@ -1,6 +1,6 @@
-## 0.5.4
+## 0.5.41
 * Updated minimum dependencies to Dart >=3.5.3 and Flutter >= 3.24.0.
-* Add `tooltipBuilder` to `SideMenuItemDataTile` now you have full access on tooltip widget.
+* Add `tooltipBuilder` to `SideMenuItemDataTile` now you can use any tooltip package you want
 ``` dart
 tooltipBuilder: (tile) => Tooltip(
 message: "Tooltip message",
