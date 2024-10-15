@@ -5,7 +5,7 @@ import 'package:flutter_side_menu/src/utils/constants.dart';
 /// use as badge child
 /// is responsible for returning a widget which is to be rendered.
 typedef SideMenuItemBadgeBuilder = Widget? Function(Widget tile);
-typedef SideMenuItemTooltipBuilder = Tooltip? Function(Widget tile);
+typedef SideMenuItemTooltipBuilder = Widget? Function(Widget tile);
 
 abstract class SideMenuItemData {
   const SideMenuItemData();
