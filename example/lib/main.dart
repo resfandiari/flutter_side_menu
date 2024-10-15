@@ -69,6 +69,10 @@ class _MyAppState extends State<MyApp> {
                       titleStyle: const TextStyle(color: Colors.white),
                       icon: const Icon(Icons.home_outlined),
                       selectedIcon: const Icon(Icons.home),
+                      tooltipBuilder: (tile) => Tooltip(
+                        message: "Tooltip message",
+                        child: tile,
+                      ),
                       badgeBuilder: (tile) => badges.Badge(
                         badgeContent: const Center(
                           child: Text(

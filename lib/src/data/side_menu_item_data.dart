@@ -5,6 +5,7 @@ import 'package:flutter_side_menu/src/utils/constants.dart';
 /// use as badge child
 /// is responsible for returning a widget which is to be rendered.
 typedef SideMenuItemBadgeBuilder = Widget? Function(Widget tile);
+typedef SideMenuItemTooltipBuilder = Tooltip? Function(Widget tile);
 
 abstract class SideMenuItemData {
   const SideMenuItemData();
@@ -19,6 +20,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
     this.titleStyle,
     this.selectedTitleStyle,
     this.tooltip,
+    this.tooltipBuilder,
     this.hasSelectedLine = true,
     this.selectedLineSize = const Size(
       Constants.itemSelectedLineWidth,
@@ -51,6 +53,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
   final TextStyle? titleStyle;
   final TextStyle? selectedTitleStyle;
   final String? tooltip;
+  final SideMenuItemTooltipBuilder? tooltipBuilder;
   final SideMenuItemBadgeBuilder? badgeBuilder;
   final Widget? icon;
   final Widget? selectedIcon;
@@ -86,6 +89,7 @@ class SideMenuItemDataTile extends SideMenuItemData {
       title: title,
       badgeBuilder: badgeBuilder,
       selectedIcon: selectedIcon,
+      tooltipBuilder: tooltipBuilder,
       tooltip: tooltip,
     );
   }

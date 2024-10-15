@@ -10,6 +10,7 @@ class SideMenuItemTile extends StatefulWidget {
     required this.minWidth,
     required this.data,
   });
+
   final SideMenuItemDataTile data;
   final bool isOpen;
   final double minWidth;
@@ -86,7 +87,11 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
   Widget _hasTooltip({
     required Widget child,
   }) {
-    if (widget.data.tooltip != null) {
+    if (widget.data.tooltipBuilder != null) {
+      if (widget.data.tooltipBuilder!(child) != null) {
+        return widget.data.tooltipBuilder!(child)!;
+      }
+    } else if (widget.data.tooltip != null) {
       return Tooltip(
         message: widget.data.tooltip,
         child: child,
