@@ -1,3 +1,13 @@
+## 0.5.4
+* Updated minimum dependencies to Dart >=3.5.3 and Flutter >= 3.24.0.
+* Add `tooltipBuilder` to `SideMenuItemDataTile` now you have full access on tooltip widget.
+``` dart
+tooltipBuilder: (tile) => Tooltip(
+message: "Tooltip message",
+child: tile,
+),
+```
+
 ## 0.5.3
 * Add `selectedDecoration` to `SideMenuItemTileDefaults`
 
